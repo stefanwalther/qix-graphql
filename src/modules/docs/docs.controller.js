@@ -1,4 +1,4 @@
-const enigma = require('./../../../node_modules/enigma.js/');
+const enigma = require('enigma.js');
 const WebSocket = require('ws');
 const schema = require('enigma.js/schemas/12.20.0.json');
 
@@ -6,9 +6,10 @@ class DocsController {
 
   static get(req, res, next) {
 
+    console.log('/docs');
     const session = enigma.create({
       schema,
-      url: 'ws://localhost:9076/app',
+      url: 'ws://qix:9076',
       createSocket: url => new WebSocket(url)
     });
 
@@ -16,11 +17,24 @@ class DocsController {
     session.on('traffic:sent', data => console.log('sent:', data));
     session.on('traffic:received', data => console.log('received:', data));
 
-    res.setHeader('Content-Type', 'application/json');
-    res.send({
-      ts: new Date().toJSON()
-    });
-    next();
+    session.open()
+      .then(global => {
+        console.log('we are connected');
+        return global.getDocList()
+          .then(docs => {
+            console.log('--');
+            console.log('docs', docs);
+            console.log('--');
+            res.send(docs);
+            next();
+          })
+          .catch(err => {
+            console.log('err', err);
+          });
+      })
+      .then(() => session.close())
+      .then(() => console.log('session closed'))
+      .catch(err => console.log(err));
   }
 
 }

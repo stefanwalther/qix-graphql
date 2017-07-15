@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const helmet = require('helmet');
 const logger = require('winster').instance();
-const graphqlHttp = require('express-graphql');
+// Const graphqlHttp = require('express-graphql');
 
 const defaultConfig = require('./config/default-config');
 const routesConfig = require('./config/routes-config');
@@ -57,5 +57,4 @@ class AppServer {
 }
 
 module.exports = AppServer;
-
 
