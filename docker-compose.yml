@@ -5,6 +5,13 @@ services:
   qix:
     container_name: qix
     image: qlikea/engine:12.32.0
+    command:
+      - -S LockD=65522
+      - -S DocumentDirectory=/documents
+    volumes:
+      - ./resources/documents:/documents
+    ports:
+      - "9096:9096"
 
   qix-graphql:
     container_name: qix-graphql
