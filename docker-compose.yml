@@ -1,0 +1,18 @@
+version: '3.3'
+
+services:
+
+  qix:
+    container_name: qix
+    image: qlikea/engine:12.32.0
+
+  qix-graphql:
+    container_name: qix-graphql
+    build:
+      context: .
+    ports:
+      - "3004:3004"
+    restart: always
+    command: ["npm", "run", "start:dev"]
+    volumes:
+      - ./src/:/home/src
