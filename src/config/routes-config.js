@@ -7,6 +7,7 @@ const pkg = require('./../../package.json');
 
 const healthCheckRoutes = require('./../modules/health-check/health-check.routes.js');
 const docsRoutes = require('./../modules/docs/docs.routes');
+const graphQLController = require('./../modules/graphql/graphql.routes');
 
 function init(app) {
   const router = express.Router(); // eslint-disable-line new-cap
@@ -14,7 +15,11 @@ function init(app) {
   // /health-check
   app.use('/', healthCheckRoutes);
 
+  // /docs
   app.use('/', docsRoutes);
+
+  // /graphql
+  app.use('/', graphQLController);
 
   // /api-docs
   const swaggerDoc = yaml.safeLoad(fs.readFileSync(path.join(__dirname, './api-docs.yml'), 'utf8'));
