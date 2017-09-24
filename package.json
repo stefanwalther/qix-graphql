@@ -12,8 +12,9 @@
     "lint:src:fix": "eslint src --fix",
     "d-build": "docker build -t stefanwalther/qix-graphql .",
     "d-run": "docker run -it stefanwalther/qix-graphql /bin/bash",
+    "dc-up:dev": "docker-compose --f=./docker-compose.yml up --build",
     "start": "node ./src/index.js",
-    "start:dev": "nodemon -L --watch ./src --exec npm run start"
+    "start:watch": "nodemon -L --watch ./src --exec npm run start"
   },
   "repository": {
     "type": "git",
@@ -34,10 +35,10 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "compression": "^1.7.0",
-    "enigma.js": "github:stefanwalther/enigma.js",
+    "enigma.js": "^2.0.2",
     "express": "^4.15.3",
     "express-graphql": "^0.6.6",
-    "graphql": "^0.10.4",
+    "graphql": "^0.11.3",
     "helmet": "^3.6.1",
     "js-yaml": "^3.9.0",
     "swagger-ui-express": "^2.0.1",

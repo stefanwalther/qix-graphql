@@ -37,7 +37,7 @@ class AppServer {
           this.logger.error('Cannot start express server', err);
           return reject(err);
         }
-        this.logger.info('Express server listening on port %d in "%s" mode', this.config.PORT, process.env.NODE_ENV);
+        this.logger.info(`Express server listening on port ${this.config.PORT} in "${process.env.NODE_ENV}" mode`);
         return resolve();
       });
     });
