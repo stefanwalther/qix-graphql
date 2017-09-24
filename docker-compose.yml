@@ -31,4 +31,4 @@ services:
     restart: always
     command: ["npm", "run", "start:watch"]
     volumes:
-      - ./src/:/home/src
+      - ./src/:/opt/qix-graphql/src

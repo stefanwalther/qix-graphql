@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const compression = require('compression');
 const helmet = require('helmet');
 const logger = require('winster').instance();
-// Const graphqlHttp = require('express-graphql');
 
 const defaultConfig = require('./config/default-config');
 const routesConfig = require('./config/routes-config');

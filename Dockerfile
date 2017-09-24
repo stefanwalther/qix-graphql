@@ -1,6 +1,6 @@
-FROM node:8.1.4
+FROM node:8.5.0
 
-ENV HOME /home
+ENV HOME /opt/qix-graphql
 RUN mkdir -p $HOME
 WORKDIR $HOME
 

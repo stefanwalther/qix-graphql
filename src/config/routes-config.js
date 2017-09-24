@@ -12,6 +12,7 @@ const graphqlHTTP = require('express-graphql');
 
 const graphQlSchema = require('./../modules/graphql/graphql.schema');
 
+// Todo: Make routes dynamic, based on some pattern ... *.routes.*.js
 function init(app) {
   const router = express.Router(); // eslint-disable-line new-cap
 
