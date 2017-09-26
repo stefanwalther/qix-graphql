@@ -1,0 +1,1 @@
+- How to handle best the Websocket connection

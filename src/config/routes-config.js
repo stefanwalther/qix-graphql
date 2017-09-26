@@ -8,6 +8,7 @@ const pkg = require('./../../package.json');
 const healthCheckRoutes = require('./../modules/health-check/health-check.routes.js');
 const docsRoutes = require('./../modules/docs/docs.routes');
 const graphQLController = require('./../modules/graphql/graphql.routes');
+const appRoutes = require('./../modules/app/app.routes');
 const graphqlHTTP = require('express-graphql');
 
 const graphQlSchema = require('./../modules/graphql/graphql.schema');
@@ -21,6 +22,8 @@ function init(app) {
 
   // /docs
   app.use('/', docsRoutes);
+
+  app.use('/', appRoutes);
 
   app.use('/graphiql', graphqlHTTP({
     schema: graphQlSchema,

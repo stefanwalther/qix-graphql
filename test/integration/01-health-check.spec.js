@@ -11,7 +11,7 @@ describe('INTEGRATION => health-check', () => {
   before(() => {
     return appServer.start()
       .then(() => {
-        server = superTest(appServer.server);
+        server = superTest(appServer.Server);
       });
   });
 

@@ -10,7 +10,7 @@ describe('INTEGRATION => appServer', () => {
   before(() => {
     return appServer.start()
       .then(() => {
-        server = superTest(appServer.server);
+        server = superTest(appServer.Server);
       });
   });
 
@@ -19,7 +19,7 @@ describe('INTEGRATION => appServer', () => {
   });
 
   it('should be running', () => {
-    expect(appServer.server).to.exist;
+    expect(appServer.Server).to.exist;
   });
 
 });

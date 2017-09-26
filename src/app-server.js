@@ -7,6 +7,8 @@ const logger = require('winster').instance();
 const defaultConfig = require('./config/default-config');
 const routesConfig = require('./config/routes-config');
 
+var app = null;
+
 class AppServer {
 
   constructor() {
@@ -36,7 +38,8 @@ class AppServer {
           this.logger.error('Cannot start express server', err);
           return reject(err);
         }
-        this.logger.info(`Express server listening on port ${this.config.PORT} in "${process.env.NODE_ENV}" mode`);
+        this.logger.info(`Express server listening on port ${this.config.PORT} in "${this.config.NODE_ENV}" mode`);
+        global.app = this.server;
         return resolve();
       });
     });
@@ -55,5 +58,8 @@ class AppServer {
   }
 }
 
-module.exports = AppServer;
+module.exports = {
+  App: app,
+  Server: AppServer
+};
 
