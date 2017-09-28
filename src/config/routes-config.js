@@ -23,7 +23,7 @@ function init(app) {
   // /docs
   app.use('/', docsRoutes);
 
-  app.use('/', appRoutes);
+  app.use('/', appRoutes.init(app));
 
   app.use('/graphiql', graphqlHTTP({
     schema: graphQlSchema,
