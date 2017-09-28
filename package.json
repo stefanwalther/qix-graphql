@@ -12,7 +12,12 @@
     "lint:src:fix": "eslint src --fix",
     "d-build": "docker build -t stefanwalther/qix-graphql .",
     "d-run": "docker run -it stefanwalther/qix-graphql /bin/bash",
-    "dc-up:dev": "COMPOSE_HTTP_TIMEOUT=1000000 && docker-compose --f=./docker-compose.yml up --build",
+    "dc-up": "docker-compose --f=./docker-compose.yml up --build",
+    "dc-up:deps": "docker-compose --f=./docker-compose.deps.yml up --build",
+    "dc-down:deps": "docker-compose --f=./docker-compose.deps.yml down",
+    "dc-down": "docker-compose --f=./docker-compose.yml down",
+    "dc-up:dev": "docker-compose --f=./docker-compose.dev.yml up --build && npm run start:watch",
+    "dc-down:dev": "docker-compose --f=./docker-compose.dev.yml down",
     "start": "node ./src/index.js",
     "start:watch": "nodemon -L --watch ./src --exec npm run start"
   },

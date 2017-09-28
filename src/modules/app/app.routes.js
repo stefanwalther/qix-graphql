@@ -2,11 +2,16 @@ const express = require('express');
 const router = express.Router(); // eslint-disable-line new-cap
 const AppController = require('./app.controller');
 const graphqlHTTP = require('express-graphql');
+const logger = require('winster').instance();
 
 const mockSchemas = require('./sample-schema');
 
+// Test with: documents%2FConsumer%20Goods%20Example.qvf
 function init(app) {
   // Todo: Add a route for the root of /app to throw an error that qDocId is required
+
+
+
   router.get('/app/:qDocId', AppController.getById);
 
   /**
@@ -16,25 +21,22 @@ function init(app) {
     req.setTimeout(0);
     // console.log(app._router.stack);
 
-    if (req.params.qDocId === 'schema1') {
-      console.log('qDocId', req.params.qDocId);
-      return graphqlHTTP({
-        schema: mockSchemas.schema1,
-        graphiql: true
-      })(req, res, next);
-    } else if (req.params.qDocId === 'schema2') {
-      console.log('qDocId', req.params.qDocId);
-      return graphqlHTTP({
-        schema: mockSchemas.schema2,
-        graphiql: true
-      })(req, res, next);
-    } else {
-      setTimeout(() => {
-        res.json({status: 'Generating'});
+    logger.verbose('/app/:qDocId/graphiql', req.params.qDocId);
+
+    return mockSchemas.genSchema(req.params.qDocId)
+      .then(schema => {
+        return graphqlHTTP({
+          schema: schema,
+          graphiql: true
+        })(req, res, next);
+      })
+      .catch(err => {
+        // Todo: Introduce ResResult
+        res.status(404);
+        res.json({error: err});
         res.end();
         next();
-      }, 1000);
-    }
+      });
   });
 
   return router;

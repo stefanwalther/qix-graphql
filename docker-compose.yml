@@ -8,13 +8,13 @@ services:
   qix:
     container_name: qix
     image: qlik/engine:latest
-    command: "-S LockD=65522 -S DocumentDirectory=/documents"
+    command: "-S LockD=65522 -S DocumentDirectory=/docs"
     volumes:
-      - sense-docs:/documents
+      - sense-docs:/docs
     ports:
-      - "9096:9096"
+      - "9076:9076"
     expose:
-      - 9096
+      - 9076
 
   sense-docs:
     image: stefanwalther/sense-docs

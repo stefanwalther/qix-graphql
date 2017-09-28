@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router(); // eslint-disable-line new-cap
 const DocsController = require('./docs.controller');
 
-router.get('/docs', DocsController.getAll);
+// Todo: Should be removed (apps/docs) !
+router.get('/apps', DocsController.getAll);
 
 module.exports = router;
