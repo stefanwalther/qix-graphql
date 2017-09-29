@@ -1,6 +1,8 @@
 const graphql = require('graphql'); // eslint-disable-line no-unused-vars
 const logger = require('winster').instance(); // eslint-disable-line no-unused-vars
 const lib = require('./lib');
+const _ = require('lodash');
+const qixResolvers = require('./qix-resolvers');
 const {
   GraphQLSchema,
   GraphQLObjectType,
@@ -13,51 +15,99 @@ const {
 
 class GraphQlGenerator {
 
-  // Constructor(config) {
-  //   // This.config = config;
-  //   // this.logger = logger;
-  // }
+  /**
+   *
+   * @param options
+   * @param options.qDocId
+   * @param options.tables_and_keys
+   */
+  constructor(options) {
+    this.options = options;
+    this.logger = logger;
+
+    this._validateOptions();
+
+    this._types = {};
+  }
+
+  _validateOptions() {
+    if (!this.options.qDocId) {
+      throw new Error('qDocId is missing');
+    }
+    if (!this.options.tables_and_keys) {
+      throw new Error('tables_and_keys is missing');
+    }
+    if (!this.options.tables_and_keys.qtr) {
+      throw new Error('tables_and_keys.qtr is missing');
+    }
+    return true;
+  }
 
   /**
    * Options.tables_and_keys
    * options.table_and_keys
+   * @param options
+   * @param {String} options.qDocId - Id of the document.
+   * @param {Object} options.tables_and_keys
    * options.nx_app_layout
    *
    * Todo: bookmarks
    *
    */
-  getSchema(options) {
+  getSchema() {
 
-    let types = this._generateTypes(options);
+    this._generateTypes();
 
     return new GraphQLSchema({
-      query: this._getRootQuery(options, types)
+      query: this._getRootQuery()
     });
   }
 
-  _generateTypes(options) {
-    let _types = {};
+  /**
+   *
+   * @param types
+   * @private
+   */
+  _getRootQuery() {
+    return new GraphQLObjectType({
+      name: 'root',
+      fields: this._getTables()
+    });
+  }
 
-    options.tables_and_keys.qtr.forEach(t => {
-      _types[lib.normalize(t.qName)] = new GraphQLObjectType({
+  _generateTypes() {
+    // console.log('generateTypes.tables_and_keys.qtr', this.options.tables_and_keys.qtr);
+    this.options.tables_and_keys.qtr.forEach(t => {
+      this._types[lib.normalize(t.qName)] = new GraphQLObjectType({
         name: lib.normalize(t.qName),
         description: `${t.qName} table`,
         fields: this._getFields(t)
       });
     });
-
-    return _types;
+    // this.logger.verbose('this._types', this._types);
   }
 
-  // Todo: There are several cases we have to think of => get some insights how tagging works ...
-  static _matchTypeFromTags(tags) {
-    if (tags.indexOf('$numeric')) {
-      return GraphQLFloat
-    } else {
-      return GraphQLString
-    }
-  }
+  /**
+   *
+   * @returns {{}}
+   * @private
+   */
+  _getTables(options, types) {
+    let r = {};
 
+    this.options.tables_and_keys.qtr.forEach(t => {
+      let inputType = this._types[lib.normalize(t.qName)];
+      r[lib.normalize(t.qName)] = {
+        type: new GraphQLList(inputType)
+        // resolve: () => {
+        //   //return qixResolvers({qDocName: options.qDocId, qTable: t.qName});
+        //   return [];
+        // }
+      };
+    });
+
+    return r;
+  }
   _getFields(t) {
     let r = {};
 
@@ -70,25 +120,17 @@ class GraphQlGenerator {
     return r;
   }
 
-  _getRootQuery(options, types) {
-    return new GraphQLObjectType({
-      name: 'root',
-      fields: this._getTables(options, types)
-    });
+  // Todo: There are several cases we have to think of => get some insights how tagging works ...
+  static _matchTypeFromTags(tags) {
+    if (tags.indexOf('$numeric')) {
+      return GraphQLFloat;
+
+      // eslint-disable-next-line no-else-return
+    } else {
+      return GraphQLString;
+    }
   }
 
-  _getTables(options, types) {
-    let r = {};
-
-    options.tables_and_keys.qtr.forEach(t => {
-      let inputType = types[lib.normalize(t.qName)];
-      r[lib.normalize(t.qName)] = {
-        type: new GraphQLList(inputType)
-      };
-    });
-
-    return r;
-  }
 }
 
 module.exports = GraphQlGenerator;

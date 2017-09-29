@@ -3,14 +3,13 @@ const router = express.Router(); // eslint-disable-line new-cap
 const AppController = require('./app.controller');
 const graphqlHTTP = require('express-graphql');
 const logger = require('winster').instance();
+const defaultConfig = require('./../../config/default-config');
 
 const mockSchemas = require('./sample-schema');
 
 // Test with: documents%2FConsumer%20Goods%20Example.qvf
 function init(app) {
   // Todo: Add a route for the root of /app to throw an error that qDocId is required
-
-
 
   router.get('/app/:qDocId', AppController.getById);
 
@@ -27,7 +26,10 @@ function init(app) {
       .then(schema => {
         return graphqlHTTP({
           schema: schema,
-          graphiql: true
+          graphiql: true,
+          context: {
+            config: defaultConfig
+          }
         })(req, res, next);
       })
       .catch(err => {

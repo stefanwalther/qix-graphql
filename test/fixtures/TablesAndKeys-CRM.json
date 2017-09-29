@@ -1,0 +1,1254 @@
+{
+  "qtr": [
+    {
+      "qName": "account",
+      "qNoOfRows": 8701,
+      "qFields": [
+        {
+          "qName": "AccountId",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 8701,
+          "qnRows": 8701,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 8701,
+          "qnPresentDistinctValues": 8701,
+          "qKeyType": "ANY_KEY",
+          "qTags": [
+            "$key",
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Account Rep Name",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 8701,
+          "qnRows": 8701,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 8644,
+          "qnPresentDistinctValues": 8644,
+          "qKeyType": "NOT_KEY",
+          "qTags": [ ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Account Type",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 8701,
+          "qnRows": 8701,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 5,
+          "qnPresentDistinctValues": 5,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Account Billing Street",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 8701,
+          "qnRows": 8701,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 8462,
+          "qnPresentDistinctValues": 8462,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Account Billing City",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 8701,
+          "qnRows": 8701,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 3537,
+          "qnPresentDistinctValues": 3537,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Account Billing State",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 8701,
+          "qnRows": 8701,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 740,
+          "qnPresentDistinctValues": 740,
+          "qKeyType": "NOT_KEY",
+          "qTags": [ ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Account Billing Zip",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 8701,
+          "qnRows": 8701,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6562,
+          "qnPresentDistinctValues": 6562,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Account Billing Country",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 8701,
+          "qnRows": 8701,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 10,
+          "qnPresentDistinctValues": 10,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Account Industry",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 8701,
+          "qnRows": 8701,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 338,
+          "qnPresentDistinctValues": 338,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        }
+      ],
+      "qPos": {
+        "qx": 0,
+        "qy": 0
+      }
+    },
+    {
+      "qName": "opportunity",
+      "qNoOfRows": 13229,
+      "qFields": [
+        {
+          "qName": "AccountId",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 0.9987357774968394,
+          "qnTotalDistinctValues": 8701,
+          "qnPresentDistinctValues": 8690,
+          "qKeyType": "ANY_KEY",
+          "qTags": [
+            "$key",
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "OpportunityId",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 0.9981890892628085,
+          "qnTotalDistinctValues": 13253,
+          "qnPresentDistinctValues": 13229,
+          "qKeyType": "ANY_KEY",
+          "qTags": [
+            "$key",
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "User Id",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 0.9974226804123711,
+          "qnTotalDistinctValues": 388,
+          "qnPresentDistinctValues": 387,
+          "qKeyType": "ANY_KEY",
+          "qTags": [
+            "$key",
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "OpportunityIdCount",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 13229,
+          "qnPresentDistinctValues": 13229,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity_Count",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 1,
+          "qnPresentDistinctValues": 1,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric",
+            "$integer"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Name",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 13229,
+          "qnPresentDistinctValues": 13229,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Customer Account Id",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasNull": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 0.45800891979741476,
+          "qnNonNulls": 6059,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 3797,
+          "qnPresentDistinctValues": 3797,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Stage",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 7,
+          "qnPresentDistinctValues": 7,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Amount",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6671,
+          "qnPresentDistinctValues": 6671,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_ARS",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_AUD",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_BRL",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_CAD",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_CHF",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_DKK",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_EUR",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_GBP",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_HKD",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_INR",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_JPY",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_MXN",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_NOK",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_SEK",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_SGD",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "ExRate_USD",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 6,
+          "qnPresentDistinctValues": 6,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Probability",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 17,
+          "qnPresentDistinctValues": 17,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Close Date",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 847,
+          "qnPresentDistinctValues": 847,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric",
+            "$integer",
+            "$timestamp",
+            "$date"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Close Month",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 12,
+          "qnPresentDistinctValues": 12,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric",
+            "$integer"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Close Year",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 3,
+          "qnPresentDistinctValues": 3,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric",
+            "$integer"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Close Month/Year",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 36,
+          "qnPresentDistinctValues": 36,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric",
+            "$integer",
+            "$timestamp",
+            "$date"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Close Quarter",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 4,
+          "qnPresentDistinctValues": 4,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Close Quarter/Year",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 12,
+          "qnPresentDistinctValues": 12,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric",
+            "$integer",
+            "$timestamp",
+            "$date"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Close YearQuarter",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 12,
+          "qnPresentDistinctValues": 12,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric",
+            "$integer"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Type",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 2,
+          "qnPresentDistinctValues": 2,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Is Closed?",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 2,
+          "qnPresentDistinctValues": 2,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Is Won?",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 2,
+          "qnPresentDistinctValues": 2,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Status",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 2,
+          "qnPresentDistinctValues": 2,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Open_Flag",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 2,
+          "qnPresentDistinctValues": 2,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric",
+            "$integer"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Closed_Flag",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 2,
+          "qnPresentDistinctValues": 2,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric",
+            "$integer"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Won/Lost",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasNull": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 0.8929624310227531,
+          "qnNonNulls": 11813,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 2,
+          "qnPresentDistinctValues": 2,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Won_Flag",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasNull": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 0.8929624310227531,
+          "qnNonNulls": 11813,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 2,
+          "qnPresentDistinctValues": 2,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric",
+            "$integer"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Triphase",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasNull": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 0.9953889182855847,
+          "qnNonNulls": 13168,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 3,
+          "qnPresentDistinctValues": 3,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric",
+            "$integer"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Forecast Category",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 5,
+          "qnPresentDistinctValues": 5,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Created Date",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 13229,
+          "qnRows": 13229,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 13228,
+          "qnPresentDistinctValues": 13228,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric",
+            "$timestamp"
+          ],
+          "qDerivedFields": [ ]
+        }
+      ],
+      "qPos": {
+        "qx": 0,
+        "qy": 0
+      }
+    },
+    {
+      "qName": "opportunitylineitem",
+      "qNoOfRows": 23585,
+      "qFields": [
+        {
+          "qName": "OpportunityId",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 23585,
+          "qnRows": 23585,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 13253,
+          "qnPresentDistinctValues": 13253,
+          "qKeyType": "ANY_KEY",
+          "qTags": [
+            "$key",
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "PricebookEntryId",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 23585,
+          "qnRows": 23585,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 183,
+          "qnPresentDistinctValues": 183,
+          "qKeyType": "ANY_KEY",
+          "qTags": [
+            "$key",
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Opportunity Qty",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 23585,
+          "qnRows": 23585,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 262,
+          "qnPresentDistinctValues": 262,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        }
+      ],
+      "qPos": {
+        "qx": 0,
+        "qy": 0
+      }
+    },
+    {
+      "qName": "pricebookentry",
+      "qNoOfRows": 183,
+      "qFields": [
+        {
+          "qName": "PricebookEntryId",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 183,
+          "qnRows": 183,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 183,
+          "qnPresentDistinctValues": 183,
+          "qKeyType": "ANY_KEY",
+          "qTags": [
+            "$key",
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Product2Id",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 183,
+          "qnRows": 183,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 11,
+          "qnPresentDistinctValues": 11,
+          "qKeyType": "ANY_KEY",
+          "qTags": [
+            "$key",
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        }
+      ],
+      "qPos": {
+        "qx": 0,
+        "qy": 0
+      }
+    },
+    {
+      "qName": "product",
+      "qNoOfRows": 11,
+      "qFields": [
+        {
+          "qName": "Product2Id",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 11,
+          "qnRows": 11,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 11,
+          "qnPresentDistinctValues": 11,
+          "qKeyType": "ANY_KEY",
+          "qTags": [
+            "$key",
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Product Name",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 11,
+          "qnRows": 11,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 10,
+          "qnPresentDistinctValues": 10,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        }
+      ],
+      "qPos": {
+        "qx": 0,
+        "qy": 0
+      }
+    },
+    {
+      "qName": "user",
+      "qNoOfRows": 388,
+      "qFields": [
+        {
+          "qName": "User Id",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 388,
+          "qnRows": 388,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 388,
+          "qnPresentDistinctValues": 388,
+          "qKeyType": "ANY_KEY",
+          "qTags": [
+            "$key",
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "User Full Name",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 388,
+          "qnRows": 388,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 388,
+          "qnPresentDistinctValues": 388,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        },
+        {
+          "qName": "Quota",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qHasDuplicates": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 388,
+          "qnRows": 388,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 281,
+          "qnPresentDistinctValues": 281,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$numeric"
+          ],
+          "qDerivedFields": [ ]
+        }
+      ],
+      "qPos": {
+        "qx": 0,
+        "qy": 0
+      }
+    },
+    {
+      "qName": "oppname",
+      "qNoOfRows": 16,
+      "qFields": [
+        {
+          "qName": "CURRENCY",
+          "qOriginalFields": [ ],
+          "qPresent": true,
+          "qInformationDensity": 1,
+          "qnNonNulls": 16,
+          "qnRows": 16,
+          "qSubsetRatio": 1,
+          "qnTotalDistinctValues": 16,
+          "qnPresentDistinctValues": 16,
+          "qKeyType": "NOT_KEY",
+          "qTags": [
+            "$ascii",
+            "$text"
+          ],
+          "qDerivedFields": [ ]
+        }
+      ],
+      "qPos": {
+        "qx": 0,
+        "qy": 0
+      }
+    }
+  ],
+  "qk": [
+    {
+      "qKeyFields": [
+        "AccountId"
+      ],
+      "qTables": [
+        "account",
+        "opportunity"
+      ]
+    },
+    {
+      "qKeyFields": [
+        "OpportunityId"
+      ],
+      "qTables": [
+        "opportunity",
+        "opportunitylineitem"
+      ]
+    },
+    {
+      "qKeyFields": [
+        "User Id"
+      ],
+      "qTables": [
+        "opportunity",
+        "user"
+      ]
+    },
+    {
+      "qKeyFields": [
+        "PricebookEntryId"
+      ],
+      "qTables": [
+        "opportunitylineitem",
+        "pricebookentry"
+      ]
+    },
+    {
+      "qKeyFields": [
+        "Product2Id"
+      ],
+      "qTables": [
+        "pricebookentry",
+        "product"
+      ]
+    }
+  ]
+}

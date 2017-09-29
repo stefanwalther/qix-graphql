@@ -47,6 +47,7 @@
     "graphql-date": "^1.0.3",
     "helmet": "^3.6.1",
     "js-yaml": "^3.9.0",
+    "lodash": "^4.17.4",
     "swagger-ui-express": "^2.0.1",
     "winster": "^0.2.5",
     "ws": "^3.0.0"

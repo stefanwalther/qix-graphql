@@ -28,6 +28,8 @@ services:
       context: .
     ports:
       - "3004:3004"
+    environment:
+      - QIX_HOST=qix
     restart: always
     command: ["npm", "run", "start:watch"]
     volumes:

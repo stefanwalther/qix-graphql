@@ -3,13 +3,14 @@ const WebSocket = require('ws');
 const qixSchema = require('enigma.js/schemas/12.20.0.json');
 const QixGraphQlGenerator = require('./qix-graphql-generator');
 const logger = require('winster').instance();
+const config = require('./../../config/default-config');
 
 class SchemaGenerator {
 
   /**
    *
    * @param options
-   * @param options.qDocId
+   * @param {String} options.qDocId - The document Id.
    *
    * @return Promise
    */
@@ -17,23 +18,31 @@ class SchemaGenerator {
 
     return SchemaGenerator.getTablesAndKeys({qDocName: options.qDocId})
       .then(tk => {
-        let gen = new QixGraphQlGenerator();
-        return gen.getSchema({tables_and_keys: tk});
+        let gen = new QixGraphQlGenerator({
+          qDocId: options.qDocId,
+          tables_and_keys: tk
+        });
+        return gen.getSchema();
+      })
+      .catch(err => {
+        throw err;
       });
   }
 
   /**
    *
-   * @param qDocName
+   * @param options
+   * @param options.qDocName
    * @returns {Promise.<TResult>}
    */
   static getTablesAndKeys(options) {
 
     logger.verbose('getTablesAndKeys', options.qDocName);
 
+    // Todo: We have to pass the connection string from outside!
     const session = enigma.create({
       schema: qixSchema,
-      url: 'ws://localhost:9076/app/engineData',
+      url: `ws://${config.QIX_HOST}:9076/app/engineData`,
       createSocket: url => new WebSocket(url)
     });
 

@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const swaggerUi = require('swagger-ui-express');
 const pkg = require('./../../package.json');
+const defaultConfig = require('./../config/default-config');
 
 const healthCheckRoutes = require('./../modules/health-check/health-check.routes.js');
 const docsRoutes = require('./../modules/docs/docs.routes');
@@ -27,7 +28,10 @@ function init(app) {
 
   app.use('/graphiql', graphqlHTTP({
     schema: graphQlSchema,
-    graphiql: true
+    graphiql: true,
+    context: {
+      config: defaultConfig
+    }
   }));
 
   // /graphql

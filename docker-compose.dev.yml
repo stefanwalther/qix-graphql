@@ -4,12 +4,13 @@ volumes:
   sense-docs:
 
 services:
+
   qix:
     container_name: qix
-    image: qlikea/engine:12.32.0
-    command: "-S LockD=65522 -S DocumentDirectory=/documents"
+    image: qlik/engine:latest
+    command: "-S LockD=65522 -S DocumentDirectory=/docs"
     volumes:
-      - sense-docs:/documents
+      - sense-docs:/docs
     ports:
       - "9076:9076"
     expose:
@@ -20,3 +21,16 @@ services:
     volumes:
       - sense-docs:/opt/sense-docs/docs
     tty: true
+
+  qix-graphql:
+    container_name: qix-graphql
+    build:
+      context: .
+    ports:
+      - "3004:3004"
+    environment:
+      - QIX_HOST=qix
+    restart: always
+    command: ["npm", "run", "start:watch"]
+    volumes:
+      - ./src/:/opt/qix-graphql/src
