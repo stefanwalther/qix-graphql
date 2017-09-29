@@ -8,7 +8,7 @@ const logger = require('winster').instance();
  * @param options
  * @param {String} options.qName - Name of the table
  */
-const resolveTable = (options) => {
+const resolveTable = options => {
   const session = enigma.create({
     schema: qixSchema,
     url: 'ws://qix:9076/app/engineData',

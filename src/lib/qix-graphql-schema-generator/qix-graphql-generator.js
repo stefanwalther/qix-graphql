@@ -1,16 +1,13 @@
-const graphql = require('graphql'); // eslint-disable-line no-unused-vars
 const logger = require('winster').instance(); // eslint-disable-line no-unused-vars
 const lib = require('./lib');
-const _ = require('lodash');
-const qixResolvers = require('./qix-resolvers');
+// Todo: const qixResolvers = require('./qix-resolvers');
 const {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
   GraphQLFloat,
-  GraphQLBoolean,
-  GraphQLList,
-  GraphQLInt
+  GraphQLList
+  // GraphQLInt
 } = require('graphql');
 
 class GraphQlGenerator {
@@ -76,7 +73,7 @@ class GraphQlGenerator {
   }
 
   _generateTypes() {
-    // console.log('generateTypes.tables_and_keys.qtr', this.options.tables_and_keys.qtr);
+    // Console.log('generateTypes.tables_and_keys.qtr', this.options.tables_and_keys.qtr);
     this.options.tables_and_keys.qtr.forEach(t => {
       this._types[lib.normalize(t.qName)] = new GraphQLObjectType({
         name: lib.normalize(t.qName),
@@ -84,7 +81,7 @@ class GraphQlGenerator {
         fields: this._getFields(t)
       });
     });
-    // this.logger.verbose('this._types', this._types);
+    // This.logger.verbose('this._types', this._types);
   }
 
   /**
@@ -92,14 +89,14 @@ class GraphQlGenerator {
    * @returns {{}}
    * @private
    */
-  _getTables(options, types) {
+  _getTables() {
     let r = {};
 
     this.options.tables_and_keys.qtr.forEach(t => {
       let inputType = this._types[lib.normalize(t.qName)];
       r[lib.normalize(t.qName)] = {
         type: new GraphQLList(inputType)
-        // resolve: () => {
+        // Resolve: () => {
         //   //return qixResolvers({qDocName: options.qDocId, qTable: t.qName});
         //   return [];
         // }
@@ -124,7 +121,6 @@ class GraphQlGenerator {
   static _matchTypeFromTags(tags) {
     if (tags.indexOf('$numeric')) {
       return GraphQLFloat;
-
       // eslint-disable-next-line no-else-return
     } else {
       return GraphQLString;

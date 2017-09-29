@@ -1,15 +1,10 @@
+// Todo: The entire file can probably be removed; used for prototyping purposes ...
 const logger = require('winster').instance();
 const SchemaGenerator = require('./../../lib/qix-graphql-schema-generator/schema-generator');
-const GraphQl = require('graphql');
 const {
-  GraphQLNonNull,
   GraphQLObjectType,
   GraphQLSchema,
-  GraphQLString,
-  GraphQLList,
-  GraphQLInt,
-  GraphQLFloat,
-  GraphQLBoolean
+  GraphQLString
 } = require('graphql');
 
 var schemas = {};
@@ -20,7 +15,7 @@ const schema1 = new GraphQLSchema({
     fields: {
       doc: {
         type: GraphQLString,
-        resolve: (obj, args, ctx) => {
+        resolve: (/* obj, args, ctx */) => {
           return 'schema1 doc';
         }
       }
@@ -34,7 +29,7 @@ const schema2 = new GraphQLSchema({
     fields: {
       doc: {
         type: GraphQLString,
-        resolve: (obj, args, ctx) => {
+        resolve: (/* obj, args, ctx */) => {
           return 'schema2 doc';
         }
       }

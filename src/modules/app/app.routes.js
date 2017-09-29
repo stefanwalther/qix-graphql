@@ -8,7 +8,8 @@ const defaultConfig = require('./../../config/default-config');
 const mockSchemas = require('./sample-schema');
 
 // Test with: documents%2FConsumer%20Goods%20Example.qvf
-function init(app) {
+// Todo: Since we do not need the app, we could simplify this ...
+function init(/* app */) {
   // Todo: Add a route for the root of /app to throw an error that qDocId is required
 
   router.get('/app/:qDocId', AppController.getById);
@@ -18,7 +19,7 @@ function init(app) {
    */
   router.all('/app/:qDocId/graphiql', (req, res, next) => {
     req.setTimeout(0);
-    // console.log(app._router.stack);
+    // Console.log(app._router.stack);
 
     logger.verbose('/app/:qDocId/graphiql', req.params.qDocId);
 

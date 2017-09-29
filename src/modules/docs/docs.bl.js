@@ -33,11 +33,6 @@ class DocsBL {
         return docs.filter(doc => doc.qDocId === qDocId)[0];
       });
   }
-
-  static getTablesAndKeys(qDocId) {
-
-  }
-
 }
 
 module.exports = DocsBL;

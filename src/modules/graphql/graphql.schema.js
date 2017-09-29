@@ -1,7 +1,6 @@
+// Todo: Probably the entire module can be removed or simplified ....
 const DocsBL = require('./../docs/docs.bl');
 
-const GraphQLDate = require('graphql-date');
-const GraphQl = require('graphql');
 const {
   GraphQLNonNull,
   GraphQLObjectType,
@@ -9,8 +8,7 @@ const {
   GraphQLString,
   GraphQLList,
   GraphQLInt,
-  GraphQLFloat,
-  GraphQLBoolean
+  GraphQLFloat
 } = require('graphql');
 
 const TableRecord = new GraphQLObjectType({
@@ -28,15 +26,10 @@ const TableRecord = new GraphQLObjectType({
   }
 });
 
-const SourceKeyRecord = new GraphQLObjectType({
-  name: 'SourceKeyRecord',
-  fields: {}
-});
-
 const TableAndKeys = new GraphQLObjectType({
   name: 'TableAndKeys',
   fields: {
-    qtr: { type: new GraphQLList(TableRecord) }
+    qtr: {type: new GraphQLList(TableRecord)}
     // ,
     // qk: {new GraphQLList(SourceKeyRecord)}
   }
@@ -85,7 +78,7 @@ const RootQueryType = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLString)
         }
       },
-      resolve: (obj, args, ctx) => {
+      resolve: (obj, args /* , ctx */) => {
         console.log('args', args);
         return DocsBL.getDoc(args.qDocId);
       }
@@ -103,7 +96,7 @@ const RootQueryType = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLString)
         }
       },
-      resolve: (obj, args, ctx) => {
+      resolve: (/* obj, args, ctx */) => {
         return {
           qtr: [{
             qName: 'Test'
