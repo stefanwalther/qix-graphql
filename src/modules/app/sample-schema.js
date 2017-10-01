@@ -9,6 +9,7 @@ const {
 
 var schemas = {};
 
+// Todo: to delete, just prototyping
 const schema1 = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'root',
@@ -23,6 +24,7 @@ const schema1 = new GraphQLSchema({
   })
 });
 
+// Todo: to delete, just prototyping
 const schema2 = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'root',
@@ -44,19 +46,17 @@ const genSchema = qDocId => {
       logger.verbose('Returning schema from cache', qDocId);
       return resolve(schemas[qDocId]);
     }
-    setTimeout(() => {
-      logger.verbose('Creating schema: ', qDocId);
-      SchemaGenerator.generateSchema({qDocId})
-        .then(schema => {
-          logger.verbose('==> OK, we got a schema');
-          schemas[qDocId] = schema;
-          resolve(schema1);
-        })
-        .catch(err => {
-          logger.error('We have an error creating the schema', err);
-          reject(err);
-        });
-    }, 2000);
+    logger.verbose('Creating schema: ', qDocId);
+    SchemaGenerator.generateSchema({qDocId})
+      .then(schema => {
+        logger.verbose('==> OK, we got a schema');
+        schemas[qDocId] = schema;
+        resolve(schema1);
+      })
+      .catch(err => {
+        logger.error('We have an error creating the schema', err);
+        reject(err);
+      });
   });
 };
 

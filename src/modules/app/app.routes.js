@@ -4,6 +4,7 @@ const AppController = require('./app.controller');
 const graphqlHTTP = require('express-graphql');
 const logger = require('winster').instance();
 const defaultConfig = require('./../../config/default-config');
+const qixResolvers = require('./../../lib/qix-graphql-schema-generator/qix-resolvers');
 
 const mockSchemas = require('./sample-schema');
 
@@ -29,7 +30,8 @@ function init(/* app */) {
           schema: schema,
           graphiql: true,
           context: {
-            config: defaultConfig
+            config: defaultConfig,
+            qixResolvers: qixResolvers
           }
         })(req, res, next);
       })

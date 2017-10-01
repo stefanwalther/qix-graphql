@@ -60,7 +60,7 @@ describe('UNIT => qix-graphql-generator', () => {
     });
   });
 
-  describe('=> getSchema', () => {
+  xdescribe('=> getSchema', () => {
     it('generates a schema', () => {
       expect(true).to.be.false;
     });

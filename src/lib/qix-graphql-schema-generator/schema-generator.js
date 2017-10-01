@@ -30,6 +30,7 @@ class SchemaGenerator {
   }
 
   /**
+   * Get TablesAndKeys from the QIX engine.
    *
    * @param options
    * @param options.qDocName
@@ -49,6 +50,12 @@ class SchemaGenerator {
     return session.open()
       .then(global => global.openDoc({qDocName: options.qDocName, qNoData: false}))
       .then(doc => doc.getTablesAndKeys({qIncludeSysVars: true}))
+      .then(table_and_keys => {
+        return session.close()
+          .then(() => {
+            return Promise.resolve(table_and_keys);
+          });
+      })
       .catch(err => {
         logger.error('Err in getTablesAndKeys', err);
         throw err;
@@ -56,6 +63,7 @@ class SchemaGenerator {
         logger('There is another error here', err);
         throw err;
       });
+    // .then(() => session.close());
   }
 }
 

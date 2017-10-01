@@ -5,20 +5,37 @@ const logger = require('winster').instance();
 
 /**
  *
- * @param options
- * @param {String} options.qName - Name of the table
+ * @param ctx
+ * @param {String} ctx.qName - Name of the table
  */
-const resolveTable = options => {
+const resolveTable = ctx => {
+
+  let docToOpen = '/docs/CRM.qvf';
+  let tableName = 'account';
+
   const session = enigma.create({
     schema: qixSchema,
-    url: 'ws://qix:9076/app/engineData',
+    url: `ws://${ctx.config.QIX_HOST}:9076/app/engineData`,
     createSocket: url => new WebSocket(url)
   });
 
   return session.open()
-    .then(global => global.openDoc({qDocName: options.qDocName, qNoData: false}))
-    .then(() => {
-      return [];
+    .then(global => global.openDoc({qDocName: docToOpen, qNoData: false}))
+    .then(doc => {
+      console.log('doc', doc);
+      return doc.getTableData({
+        qOffset: 0,
+        qRows: 100,
+        qSyntheticMode: false,
+        qTableName: tableName
+        })
+        .then(td => {
+          console.log('table data', td);
+          return [];
+        })
+        .catch(err => {
+          console.log('err in getTableData', err);
+        });
     })
     .catch(err => {
       logger.error('Err in getTablesAndKeys', err);
@@ -29,6 +46,13 @@ const resolveTable = options => {
     });
 };
 
+const outputOptions = ctx => {
+  logger.verbose('qixResolvers.outputOptions');
+  logger.verbose('==> ctx.config', ctx.config);
+  return null;
+};
+
 module.exports = {
+  outputOptions,
   resolveTable
 };

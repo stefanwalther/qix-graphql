@@ -95,11 +95,15 @@ class GraphQlGenerator {
     this.options.tables_and_keys.qtr.forEach(t => {
       let inputType = this._types[lib.normalize(t.qName)];
       r[lib.normalize(t.qName)] = {
-        type: new GraphQLList(inputType)
-        // Resolve: () => {
-        //   //return qixResolvers({qDocName: options.qDocId, qTable: t.qName});
-        //   return [];
-        // }
+        type: new GraphQLList(inputType),
+        resolve: (obj, args, ctx) => {
+          this.logger.verbose('we are resolving table: ', t.qName);
+          this.logger.verbose('obj', obj || '<not set>');
+          this.logger.verbose('args', args || '<not set>');
+          this.logger.verbose('ctx', ctx || '<not set>');
+          //return qixResolvers({qDocName: options.qDocId, qTable: t.qName});
+          return ctx.qixResolvers.resolveTable(ctx);
+        }
       };
     });
 
