@@ -51,7 +51,7 @@ describe('UNIT => qix-graphql-generator', () => {
           qDocId: 'foo',
           tables_and_keys: mockTablesAndKeys
         });
-        g._generateTypes();
+        g._initTypes();
         expect(g._types).to.exist;
         expect(g._types).to.contain.property('account');
       } catch (e) {

@@ -1,13 +1,10 @@
 const logger = require('winster').instance(); // eslint-disable-line no-unused-vars
 const lib = require('./lib');
-// Todo: const qixResolvers = require('./qix-resolvers');
 const {
   GraphQLSchema,
   GraphQLObjectType,
   GraphQLString,
-  GraphQLFloat,
   GraphQLList
-  // GraphQLInt
 } = require('graphql');
 
 class GraphQlGenerator {
@@ -27,6 +24,11 @@ class GraphQlGenerator {
     this._types = {};
   }
 
+  /**
+   * Some validations to be used when initializing the class.
+   * @returns {boolean}
+   * @private
+   */
   _validateOptions() {
     if (!this.options.qDocId) {
       throw new Error('qDocId is missing');
@@ -53,7 +55,7 @@ class GraphQlGenerator {
    */
   getSchema() {
 
-    this._generateTypes();
+    this._initTypes();
 
     return new GraphQLSchema({
       query: this._getRootQuery()
@@ -72,7 +74,12 @@ class GraphQlGenerator {
     });
   }
 
-  _generateTypes() {
+  // Todo: Could make sense to refactor this to be a function to return the types.
+  /**
+   * Initializes the types based on this.options.tables_and_keys
+   * @private
+   */
+  _initTypes() {
     // Console.log('generateTypes.tables_and_keys.qtr', this.options.tables_and_keys.qtr);
     this.options.tables_and_keys.qtr.forEach(t => {
       this._types[lib.normalize(t.qName)] = new GraphQLObjectType({
@@ -97,22 +104,24 @@ class GraphQlGenerator {
       r[lib.normalize(t.qName)] = {
         type: new GraphQLList(inputType),
         resolve: (obj, args, ctx) => {
-          this.logger.verbose('we are resolving table: ', t.qName);
-          this.logger.verbose('obj', obj || '<not set>');
-          this.logger.verbose('args', args || '<not set>');
-          this.logger.verbose('ctx', ctx || '<not set>');
-          //return qixResolvers({qDocName: options.qDocId, qTable: t.qName});
-          return ctx.qixResolvers.resolveTable(ctx);
+          return ctx.qixResolvers.resolveTable(ctx); //Todo(AAA): Here we can potentially pass in the list of fields
         }
       };
     });
 
     return r;
   }
-  _getFields(t) {
+
+  /**
+   * Return the fields for a given table.
+   * @param table
+   * @returns {{}}
+   * @private
+   */
+  _getFields(table) {
     let r = {};
 
-    t.qFields.forEach(f => {
+    table.qFields.forEach(f => {
       r[lib.normalize(f.qName)] = {
         type: GraphQlGenerator._matchTypeFromTags(f.qTags)
       };
@@ -123,12 +132,16 @@ class GraphQlGenerator {
 
   // Todo: There are several cases we have to think of => get some insights how tagging works ...
   static _matchTypeFromTags(tags) {
-    if (tags.indexOf('$numeric')) {
-      return GraphQLFloat;
-      // eslint-disable-next-line no-else-return
-    } else {
-      return GraphQLString;
-    }
+
+    return GraphQLString;
+
+    // Todo: needs to be tested properly
+    // if (tags.indexOf('$numeric')) {
+    //   return GraphQLFloat;
+    //   // eslint-disable-next-line no-else-return
+    // } else {
+    //   return GraphQLString;
+    // }
   }
 
 }

@@ -14,7 +14,6 @@ class AppController {
     });
     next();
   }
-
 }
 
 module.exports = AppController;
