@@ -2,7 +2,6 @@ const enigma = require('enigma.js');
 const WebSocket = require('ws');
 const qixSchema = require('enigma.js/schemas/12.20.0.json');
 const logger = require('winster').instance();
-const lib = require('./lib');
 
 // Todo: We should add better validation for the given context ...
 /**
@@ -15,6 +14,7 @@ const resolveTable = (tableName, fields, ctx) => {
   // Todo(AAA): All hardcoded values, need to be fixed
   let docToOpen = '/docs/CRM.qvf';
 
+  // Todo(AAA): we should be able to pass in an existing connection
   const session = enigma.create({
     schema: qixSchema,
     url: `ws://${ctx.config.QIX_HOST}:9076/app/engineData`,
@@ -26,11 +26,11 @@ const resolveTable = (tableName, fields, ctx) => {
     .then(doc => {
       console.log('doc', doc);
       return doc.getTableData({
-          qOffset: 0,
-          qRows: 10,
-          qSyntheticMode: false,
-          qTableName: tableName
-        })
+        qOffset: 0,
+        qRows: 10,
+        qSyntheticMode: false,
+        qTableName: tableName
+      })
         .then(qResult => {
 
           let result = [];

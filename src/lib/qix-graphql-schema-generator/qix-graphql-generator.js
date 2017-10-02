@@ -145,7 +145,7 @@ class GraphQlGenerator {
   }
 
   // Todo: There are several cases we have to think of => get some insights how tagging works ...
-  static _matchTypeFromTags(tags) {
+  static _matchTypeFromTags(/* tags */) {
 
     return GraphQLString;
 
