@@ -10,21 +10,10 @@ const lib = require('./lib');
  * @param ctx
  * @param {String} ctx.qName - Name of the table
  */
-const resolveTable = ctx => {
+const resolveTable = (tableName, fields, ctx) => {
 
   // Todo(AAA): All hardcoded values, need to be fixed
   let docToOpen = '/docs/CRM.qvf';
-  let tableName = 'account';
-  if (!ctx.tables_and_keys) {
-    ctx.tables_and_keys = require('./../../../test/fixtures/TablesAndKeys-CRM.json');
-  }
-
-  // Todo(AAA): This should already been passed to this function
-  let fields = ctx.tables_and_keys.qtr.find(f => {
-    return f.qName = tableName;
-  }).qFields.map(o => {
-    return lib.normalize(o.qName);
-  });
 
   const session = enigma.create({
     schema: qixSchema,

@@ -22,6 +22,7 @@ class GraphQlGenerator {
     this._validateOptions();
 
     this._types = {};
+    this._tableCache = {};
   }
 
   /**
@@ -56,6 +57,7 @@ class GraphQlGenerator {
   getSchema() {
 
     this._initTypes();
+    this._initTableCache();
 
     return new GraphQLSchema({
       query: this._getRootQuery()
@@ -91,6 +93,16 @@ class GraphQlGenerator {
     // This.logger.verbose('this._types', this._types);
   }
 
+  _initTableCache() {
+    this.options.tables_and_keys.qtr.forEach(t => {
+      let fields = [];
+      t.qFields.forEach(f => {
+        fields.push(lib.normalize(f.qName));
+      });
+      this._tableCache[lib.normalize(t.qName)] = fields;
+    });
+  }
+
   /**
    *
    * @returns {{}}
@@ -100,11 +112,13 @@ class GraphQlGenerator {
     let r = {};
 
     this.options.tables_and_keys.qtr.forEach(t => {
-      let inputType = this._types[lib.normalize(t.qName)];
+      let tableName = lib.normalize(t.qName);
+      let inputType = this._types[tableName];
+      let fields = this._tableCache[tableName];
       r[lib.normalize(t.qName)] = {
         type: new GraphQLList(inputType),
         resolve: (obj, args, ctx) => {
-          return ctx.qixResolvers.resolveTable(ctx); //Todo(AAA): Here we can potentially pass in the list of fields
+          return ctx.qixResolvers.resolveTable(tableName, fields, ctx); // Todo(AAA): Here we can potentially pass in the list of fields
         }
       };
     });
