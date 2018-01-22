@@ -31,6 +31,6 @@ services:
     environment:
       - QIX_HOST=qix
     restart: always
-    command: ["npm", "run", "start:watch"]
+    command: ["npm", "run", "start"]
     volumes:
       - ./src/:/opt/qix-graphql/src

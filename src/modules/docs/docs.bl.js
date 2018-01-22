@@ -1,6 +1,7 @@
 const enigma = require('enigma.js');
 const WebSocket = require('ws');
 const schema = require('enigma.js/schemas/12.20.0.json');
+const defaultConfig = require('./../../config/default-config');
 
 class DocsBL {
 
@@ -10,7 +11,7 @@ class DocsBL {
     const session = enigma.create({
       schema,
       // Todo: Make this configurable ...
-      url: 'ws://qix:9076',
+      url: `ws://${defaultConfig.QIX_HOST}:9076`,
       createSocket: url => new WebSocket(url)
     });
 
