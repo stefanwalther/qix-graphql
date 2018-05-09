@@ -6,7 +6,7 @@ const logger = require('winster').instance();
 const defaultConfig = require('./../../config/default-config');
 const qixResolvers = require('./../../lib/qix-graphql-schema-generator/qix-resolvers');
 const AppController = require('./app.controller');
-const mockSchemas = require('./sample-schema');
+const mockSchemas = require('./z-sample-schema'); // Todo (AAA): To be removed
 
 // Test with: documents%2FConsumer%20Goods%20Example.qvf
 // Todo: Since we do not need the app, we could simplify this ...
