@@ -22,9 +22,9 @@
     "start:watch": "nodemon -L --watch ./src --exec npm run start",
     "start:watch:debug": "nodemon -L --watch ./src --exec node --inspect ./src/index.js",
     "test": "npm run test:unit && npm run test:integration && npm run coverage",
-    "test:watch": "nyc --reporter=lcov mocha './test/**/*.spec.js' --require './test/mocha.conf.js' --reporter=min --timeout 6000 --watch",
-    "test:integration": "nyc --reporter=lcov mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js' --timeout 6000",
-    "test:integration:watch": "npm run test:unit && nyc --reporter=lcov mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js' --reporter=min --timeout 6000 --watch",
+    "test:watch": "cross-env QIX_HOST=localhost nyc --reporter=lcov mocha './test/**/*.spec.js' --require './test/mocha.conf.js' --reporter=min --timeout 6000 --watch",
+    "test:integration": "cross-env QIX_HOST=localhost nyc --reporter=lcov mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js' --timeout 6000",
+    "test:integration:watch": "cross-env QIX_HOST=localhost npm run test:unit && nyc --reporter=lcov mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js' --reporter=min --timeout 6000 --watch",
     "test:unit": "nyc --reporter=lcov mocha './test/unit/**/*.spec.js' --require './test/mocha.conf.js'",
     "coverage": "nyc report",
     "precommit": "npm run lint"
@@ -51,6 +51,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "compression": "^1.7.2",
+    "cross-env": "^5.1.5",
     "enigma.js": "^2.2.1",
     "express": "^4.16.3",
     "express-graphql": "^0.6.12",
