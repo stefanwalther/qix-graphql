@@ -9,6 +9,10 @@ gen-readme:					## Generate README.md (using docker-verb)
 	docker run --rm -v ${PWD}:/opt/verb stefanwalther/verb
 .PHONY: gen-readme
 
+gen-readme-watch:
+	npm run docs:watch
+.PHONY: gen-readme-watch
+
 up-deps:
 	docker-compose --f=./docker-compose.deps.yml up --build
 .PHONY: up-deps
