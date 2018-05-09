@@ -39,10 +39,10 @@ describe('INTEGRATION => enigma.js tests', () => {
     });
 
     it('open a session', () => {
-      session.on('opened', data => console.log('session opened'));
-      session.on('closed', data => console.log('session closed'));
-      session.on('traffic:sent', data => console.log('sent:', data));
-      session.on('traffic:received', data => console.log('received:', data));
+      //session.on('opened', data => console.log('session opened'));
+      //session.on('closed', data => console.log('session closed'));
+      //session.on('traffic:sent', data => console.log('sent:', data));
+      //session.on('traffic:received', data => console.log('received:', data));
 
       return session.open()
         .then(global => {
