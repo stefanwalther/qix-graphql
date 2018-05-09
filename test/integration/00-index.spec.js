@@ -4,18 +4,17 @@ const AppServer = require('./../../src/app-server');
 
 describe('INTEGRATION => appServer', () => {
 
-  let server = null;
-  const appServer = new AppServer();
+  let server;
+  let appServer;
 
-  before(() => {
-    return appServer.start()
-      .then(() => {
-        server = superTest(appServer.server);
-      });
+  beforeEach(async () => {
+    appServer = new AppServer();
+    await appServer.start();
+    server = superTest(appServer.server);
   });
 
-  after(() => {
-    return appServer.stop();
+  afterEach(async () => {
+    await appServer.stop();
   });
 
   it('should be running', () => {

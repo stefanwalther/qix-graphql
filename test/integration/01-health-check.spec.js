@@ -7,16 +7,16 @@ const pkg = require('./../../package.json');
 describe('INTEGRATION => health-check', () => {
 
   let server;
-  const appServer = new AppServer();
-  before(() => {
-    return appServer.start()
-      .then(() => {
-        server = superTest(appServer.server);
-      });
+  let appServer;
+
+  beforeEach(async () => {
+    appServer = new AppServer();
+    await appServer.start();
+    server = superTest(appServer.server);
   });
 
-  after(() => {
-    return appServer.stop();
+  afterEach(async () => {
+    await appServer.stop();
   });
 
   it('returns OK and a timestamp', () => {

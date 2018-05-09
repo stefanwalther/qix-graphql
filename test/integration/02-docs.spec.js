@@ -4,7 +4,7 @@ const AppServer = require('./../../src/app-server');
 
 describe('', () => {
 
-  it('should ideally succeed', () => {
+  xit('should ideally succeed', () => {
     expect(true).to.be.true;
   });
 
