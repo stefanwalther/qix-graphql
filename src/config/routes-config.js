@@ -7,7 +7,6 @@ const pkg = require('./../../package.json');
 const defaultConfig = require('./../config/default-config');
 
 const healthCheckRoutes = require('./../modules/health-check/health-check.routes.js');
-const docsRoutes = require('./../modules/docs/docs.routes');
 const graphQLController = require('./../modules/graphql/graphql.routes');
 const appRoutes = require('./../modules/app/app.routes');
 const graphqlHTTP = require('express-graphql');
@@ -20,10 +19,6 @@ function init(app) {
 
   // /health-check
   app.use('/', healthCheckRoutes);
-
-  // /docs
-  // Todo: To be removed, this was just for testing purposes
-  app.use('/', docsRoutes);
 
   app.use('/', appRoutes.init(app));
 

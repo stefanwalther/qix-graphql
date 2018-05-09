@@ -1,5 +1,5 @@
 // Todo: Probably the entire module can be removed or simplified ....
-const DocsBL = require('./../docs/docs.bl');
+const Prototyping = require('./../prototyping-to-be-moved');
 
 const {
   GraphQLNonNull,
@@ -89,13 +89,13 @@ const RootQueryType = new GraphQLObjectType({
       },
       resolve: (obj, args /* , ctx */) => {
         console.log('args', args);
-        return DocsBL.getDoc(args.qDocId);
+        return Prototyping.getDoc(args.qDocId);
       }
     },
     docs: {
       type: new GraphQLList(DocType),
       resolve: (/* obj, args, ctx */) => {
-        return DocsBL.getDocs();
+        return Prototyping.getDocs();
       }
     },
     docfields: {
