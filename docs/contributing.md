@@ -5,3 +5,9 @@ Pull requests and stars are always welcome. For bugs and feature requests, [plea
 3. Create a pull request (PR)
 
 I cannot guarantee that I will merge all PRs but I will evaluate them all.
+
+### Developing
+
+
+
+### Testing
