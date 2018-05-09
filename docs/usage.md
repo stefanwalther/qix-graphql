@@ -1,5 +1,13 @@
 
-Open graphiQl: http://localhost:3004/graphiql
+Spin up the required containers using
+
+```
+$ docker-compose up
+```
+
+### Work with the environment scope
+
+Open the GraphiQl UI: http://localhost:3004/graphiql
 
 Get the list of docs:
 
@@ -33,6 +41,75 @@ query getDocFields {
     qtr {
       qName
     }
+  }
+}
+```
+
+### Work with the app scope
+
+If you get the meta data above from the entire environment and execute the following
+
+```
+{
+  docs {
+    qDocName
+    qDocId
+    qTitle
+    _links {
+      _doc
+    }
+  }
+}
+```
+
+You'll see a list similar like this:
+
+```
+{
+  "data": {
+    "docs": [
+      {
+        "qDocName": "Consumer Goods Example.qvf",
+        "qDocId": "/docs/Consumer Goods Example.qvf",
+        "qTitle": "Consumer Goods Example",
+        "_links": {
+          "_doc": "http://localhost:3004/app/%2Fdocs%2FConsumer%20Goods%20Example.qvf/graphiql"
+        }
+      },
+      {
+        "qDocName": "Consumer Sales.qvf",
+        "qDocId": "/docs/Consumer Sales.qvf",
+        "qTitle": "Consumer Sales",
+        "_links": {
+          "_doc": "http://localhost:3004/app/%2Fdocs%2FConsumer%20Sales.qvf/graphiql"
+        }
+      }
+    ]
+  }
+}
+```
+
+Copying the value of the attribute `_doc`, will give you the link to open another GraphiQl instance, *connecting to this single app*: 
+
+This then allows you to get e.g. all content of a single table.
+
+Example:
+
+- Connect to `http://localhost:3004/app/%2Fdocs%2FCRM.qvf/graphiql`
+- Then execute the following query to get all data from the "Account" table:
+
+```
+{
+  account {
+    AccountId
+    Account_Rep_Name
+    Account_Type
+    Account_Billing_Street
+    Account_Billing_City
+    Account_Billing_State
+    Account_Billing_Zip
+    Account_Billing_Country
+    Account_Industry
   }
 }
 ```
