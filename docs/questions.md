@@ -1,0 +1,3 @@
+- How to handle best the Websocket connection
+  - Seems to make sense to store this in the GraphQL context
+  - But there should be a different WS for each of the documents (see enigma.js ?!)

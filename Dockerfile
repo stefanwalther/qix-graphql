@@ -1,12 +1,12 @@
-FROM node:v8.1.4
+FROM node:8.6.0
 
-ENV HOME /home
+ENV HOME /opt/qix-graphql
 RUN mkdir -p $HOME
 WORKDIR $HOME
 
 COPY index.js package.json ./
 
-RUN npm install
+RUN npm install -g nodemon && npm install
 
 COPY /src ./src/
 

@@ -1,0 +1,112 @@
+swagger: '2.0'
+
+info:
+  version: "0.0.1"
+  title: qix-graphql
+  license:
+    name: MIT
+host: localhost
+schemes:
+  - http
+  - https
+basePath: /v1
+consumes:
+  - application/json
+produces:
+  - application/json
+
+################################################################################
+#                                   Paths                                      #
+################################################################################
+paths:
+  /logs:
+    post:
+      description: Post `log` object.
+      parameters:
+        - name: log
+          in: body
+          schema:
+            $ref: '#/definitions/log'
+      responses:
+        201:
+          description: Successfully created.
+          schema:
+            $ref: '#/definitions/logResult'
+      tags:
+        - Logs
+    get:
+      description: Get all `log` objects.
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/logResult'
+      tags:
+        - Logs
+    delete:
+      description: Delete all log entries.
+      summary: Delete all log entries.
+      responses:
+        200:
+          description: OK
+
+
+  /logs/:id:
+    get:
+      description: Get log entry by Id.
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/logResult'
+      tags:
+        - Logs
+    delete:
+      description: Delete log entry by Id.
+      responses:
+        200:
+          description: OK
+
+
+################################################################################
+#                               Definitions                                    #
+################################################################################
+definitions:
+  log:
+    type: object
+    properties:
+      name:
+        type: string
+      source:
+        type: string
+      level:
+        type: string
+        enum:
+          - fatal
+          - error
+          - debug
+          - warn
+          - data
+          - info
+          - verbose
+          - trace
+        defaultValue: info
+      message:
+        type: object
+
+
+  logResult:
+    type: object
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+      s5r_created_at:
+        type: string
+        format: date
+      s5r_update_at:
+        type: string
+        format: date
+
+

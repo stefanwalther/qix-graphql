@@ -9,9 +9,9 @@ services:
     container_name: qix
     image: qlik/engine:latest
     command: [
-      "-S", "DocumentDirectory=/docs",
-      "-S", "AcceptEULA=yes"
-    ]
+       "-S", "DocumentDirectory=/docs",
+       "-S", "AcceptEULA=yes"
+     ]
     volumes:
       - sense-docs:/docs
     ports:
@@ -24,16 +24,3 @@ services:
     volumes:
       - sense-docs:/opt/sense-docs/docs
     tty: true
-
-  qix-graphql:
-    container_name: qix-graphql
-    build:
-      context: .
-    ports:
-      - "3004:3004"
-    environment:
-      - QIX_HOST=qix
-    restart: always
-    command: ["npm", "run", "start"]
-    volumes:
-      - ./src/:/opt/qix-graphql/src
