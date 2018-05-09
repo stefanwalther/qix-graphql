@@ -63,6 +63,15 @@ const DocType = new GraphQLObjectType({
           qUrl: {type: GraphQLString}
         }
       })
+    },
+    _links: {
+      type: new GraphQLObjectType({
+        name: '_links',
+        fields: {
+          _self: {type: GraphQLString},
+          _doc: {type: GraphQLString}
+        }
+      })
     }
   }
 });

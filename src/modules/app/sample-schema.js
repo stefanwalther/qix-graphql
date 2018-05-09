@@ -7,7 +7,7 @@ const {
   GraphQLString
 } = require('graphql');
 
-var schemas = {};
+let schemas = {};
 
 // Todo: to delete, just prototyping
 const schema1 = new GraphQLSchema({

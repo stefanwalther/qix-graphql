@@ -2,6 +2,7 @@ const enigma = require('enigma.js');
 const WebSocket = require('ws');
 const schema = require('enigma.js/schemas/12.20.0.json');
 const defaultConfig = require('./../../config/default-config');
+const _ = require('lodash');
 
 class DocsBL {
 
@@ -19,6 +20,12 @@ class DocsBL {
       .then(global => {
         return global.getDocList()
           .then(docs => {
+            docs.map(doc => { // eslint-disable-line array-callback-return
+              doc._links = {
+                // Todo: Make this configurable ...
+                _doc: `http://localhost:3004/app/${encodeURIComponent(doc.qDocId)}/graphiql`
+              };
+            });
             retVal = docs;
           });
       })
