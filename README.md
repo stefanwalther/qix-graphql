@@ -168,7 +168,7 @@ This then allows you to get e.g. all content of a single table.
 
 I have split the work in a few iterations:
 
-- **Iteration 1: Core prototyping work** <== WE ARE HERE !!!
+- **Iteration 1: Core prototyping work** **_<== !!! Sorry to say: WE ARE HERE !!!_**
   - Focus on core functionality
   - Testing various ideas/concepts
   - No UI work
