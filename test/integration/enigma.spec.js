@@ -1,41 +1,28 @@
-const superTest = require('supertest');
-const HttpStatus = require('http-status-codes');
-const AppServer = require('./../../src/app-server');
-
 const enigma = require('enigma.js');
 const WebSocket = require('ws');
+// Todo: verify the schema, or probably even better: make this a global config
 const qixSchema = require('enigma.js/schemas/12.20.0.json');
 
 const config = require('./../../src/config/default-config');
 
-describe('INTEGRATION => enigma.js tests', () => {
-
-  // let server = null;
-  // const appServer = new AppServer();
-
-  before(() => {
-    // return appServer.start()
-    //   .then(() => {
-    //     server = superTest(appServer.server);
-    //   });
-  });
-
-  after(() => {
-    // return appServer.stop();
-  });
+describe('INTEGRATION => enigma.js tests ==>', () => {
 
   describe('SESSION', () => {
 
     let session = null;
-    before(() => {
+
+    beforeEach(() => {
       session = enigma.create({
         schema: qixSchema,
         url: `ws://${config.QIX_HOST}:${config.QIX_PORT}/app/engineData`,
         createSocket: url => new WebSocket(url)
       });
     });
-    after(() => {
-      return session.close();
+
+    afterEach(async () => {
+      if (session) {
+        await session.close();
+      }
     });
 
     it('open a session', () => {
@@ -53,16 +40,21 @@ describe('INTEGRATION => enigma.js tests', () => {
 
   describe('DOC', () => {
     let session = null;
-    before(() => {
+
+    beforeEach(() => {
       session = enigma.create({
         schema: qixSchema,
         url: `ws://${config.QIX_HOST}:${config.QIX_PORT}/app/engineData`,
         createSocket: url => new WebSocket(url)
       });
     });
-    after(() => {
-      return session.close();
+
+    afterEach(async () => {
+      if (session) {
+        await session.close();
+      }
     });
+
     it('open a doc', () => {
 
       return session.open()
