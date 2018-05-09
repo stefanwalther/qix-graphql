@@ -9,9 +9,9 @@ services:
     container_name: qix
     image: qlikcore/engine:12.166.0
     command: [
-       "-S", "DocumentDirectory=/docs",
-       "-S", "AcceptEULA=yes"
-     ]
+      "-S", "DocumentDirectory=/docs",
+      "-S", "AcceptEULA=yes"
+    ]
     volumes:
       - sense-docs:/docs
     ports:
@@ -25,18 +25,16 @@ services:
       - sense-docs:/opt/sense-docs/docs
     tty: true
 
-  qix-graphql:
-    container_name: qix-graphql
-    build:
-      context: .
-    ports:
-      - "3004:3004"
+  qix-graphql-test:
+    image: stefanwalther/qix-graphql-test
     environment:
+      - NODE_ENV=test
       - QIX_HOST=qix
       - QIX_PORT=9076
       - HOST=qix-graphql
       - PORT=3004
-    restart: always
-    command: ["npm", "run", "start:watch"]
+    depends_on:
+      - qix
+      - sense-docs
     volumes:
-      - ./src/:/opt/qix-graphql/src
+      - ./coverage:/opt/qix-graphql/coverage
