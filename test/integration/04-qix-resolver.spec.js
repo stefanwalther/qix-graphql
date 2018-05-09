@@ -3,6 +3,7 @@ const mockTablesAndKeys = require('./../fixtures/TablesAndKeys-CRM.json');
 
 describe('qixResolver', () => {
   describe('resolveTable', () => {
+
     xit('throws an error without context', () => {
       try {
         qixResolver.resolveTable();
@@ -12,19 +13,18 @@ describe('qixResolver', () => {
       }
     });
 
-    xit('resolves the table', () => {
+    // Todo: we have new params there, so this all needs to be fixed
+    // when working on this functionality
+    it('resolves the table', async () => {
       let ctx = {
         config: {
           QIX_HOST: 'localhost'
         },
         tables_and_keys: mockTablesAndKeys
       };
-      return qixResolver.resolveTable(ctx)
-        .then(result => {
-          expect(result).to.exist;
-          expect(result).to.be.an('array');
-        });
+      let result = await qixResolver.resolveTable(null, null, ctx); // Todo: pass variables in here
+      expect(result).to.exist;
+      expect(result).to.be.an('array');
     });
-
   });
 });

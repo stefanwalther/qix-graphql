@@ -17,7 +17,7 @@ describe('INTEGRATION => appServer', () => {
     await appServer.stop();
   });
 
-  it('should be running', () => {
+  it('should be instantiated', () => {
     expect(appServer.server).to.exist;
   });
 

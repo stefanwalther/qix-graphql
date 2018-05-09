@@ -19,8 +19,8 @@ describe('INTEGRATION => health-check', () => {
     await appServer.stop();
   });
 
-  it('returns OK and a timestamp', () => {
-    return server
+  it('returns OK and a timestamp', async () => {
+    await server
       .get('/health-check')
       .expect(HttpStatus.OK)
       .then(result => {
