@@ -33,6 +33,9 @@ services:
       - "3004:3004"
     environment:
       - QIX_HOST=qix
+      - QIX_PORT=9076
+      - HOST=qix-graphql
+      - PORT=3004
     restart: always
     command: ["npm", "run", "start"]
     volumes:
