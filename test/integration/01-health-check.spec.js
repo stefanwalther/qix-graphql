@@ -24,7 +24,6 @@ describe('INTEGRATION => health-check', () => {
       .get('/health-check')
       .expect(HttpStatus.OK)
       .then(result => {
-        console.log(result.body);
         expect(result).to.exist;
         expect(result).to.have.property('body');
         expect(result.body).to.have.property('ts').to.exist;
