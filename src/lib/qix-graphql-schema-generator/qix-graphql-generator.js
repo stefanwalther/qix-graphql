@@ -65,6 +65,7 @@ class GraphQlGenerator {
   }
 
   /**
+   * @Todo: Document this
    *
    * @param types
    * @private
@@ -93,6 +94,11 @@ class GraphQlGenerator {
     // This.logger.verbose('this._types', this._types);
   }
 
+  /**
+   * @Todo: Document this
+   *
+   * @private
+   */
   _initTableCache() {
     this.options.tables_and_keys.qtr.forEach(t => {
       let fields = [];
@@ -104,6 +110,7 @@ class GraphQlGenerator {
   }
 
   /**
+   * @Todo: Document this
    *
    * @returns {{}}
    * @private
@@ -128,8 +135,10 @@ class GraphQlGenerator {
 
   /**
    * Return the fields for a given table.
-   * @param table
-   * @returns {{}}
+   *
+   * @param {string} table - The name of the table.
+   *
+   * @returns {object}
    * @private
    */
   _getFields(table) {

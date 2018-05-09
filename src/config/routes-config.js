@@ -22,6 +22,7 @@ function init(app) {
   app.use('/', healthCheckRoutes);
 
   // /docs
+  // Todo: To be removed, this was just for testing purposes
   app.use('/', docsRoutes);
 
   app.use('/', appRoutes.init(app));
