@@ -7,8 +7,11 @@ services:
 
   qix:
     container_name: qix
-    image: qlik/engine:latest
-    command: "-S LockD=65522 -S DocumentDirectory=/docs"
+    image: qlikcore/engine:12.166.0
+    command: [
+       "-S", "DocumentDirectory=/docs",
+       "-S", "AcceptEULA=yes"
+     ]
     volumes:
       - sense-docs:/docs
     ports:
