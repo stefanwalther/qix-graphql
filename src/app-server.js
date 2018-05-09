@@ -17,6 +17,11 @@ class AppServer {
     this._initApp();
   }
 
+  /**
+   * Initialize the the express app.
+   *
+   * @private
+   */
   _initApp() {
     this.app = express();
     this.app.use(compression());
@@ -29,29 +34,22 @@ class AppServer {
   /**
    * Start the GraphQL server.
    */
-  start() {
-    return new Promise((resolve, reject) => {
-      this.server = this.app.listen(this.config.PORT, err => {
-        if (err) {
-          this.logger.error('Cannot start express server', err);
-          return reject(err);
-        }
-        this.logger.info(`Express server listening on port ${this.config.PORT} in "${this.config.NODE_ENV}" mode`);
-        return resolve();
-      });
-    });
+  async start() {
+
+    try {
+      this.server = this.app.listen(this.config.PORT);
+      this.logger.info(`Express server listening on port ${this.config.PORT} in "${this.config.NODE_ENV}" mode`);
+    } catch (e) {
+      this.logger.error('Cannot start express server', e);
+    }
   }
 
   /**
    * Stop the GraphQL server.
    */
-  stop() {
-    return new Promise(resolve => {
-      this.server.close(() => {
-        this.logger.info('Server stopped');
-        resolve();
-      });
-    });
+  async stop() {
+    await this.server.close();
+    this.logger.info('Server stopped');
   }
 }
 
