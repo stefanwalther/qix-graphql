@@ -43,7 +43,7 @@ class SchemaGenerator {
     // Todo: We have to pass the connection string from outside!
     const session = enigma.create({
       schema: qixSchema,
-      url: `ws://${config.QIX_HOST}:9076/app/engineData`,
+      url: `ws://${config.QIX_HOST}:${config.QIX_PORT}/app/engineData`,
       createSocket: url => new WebSocket(url)
     });
 

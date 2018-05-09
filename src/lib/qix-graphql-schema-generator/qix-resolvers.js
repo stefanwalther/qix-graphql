@@ -17,7 +17,7 @@ const resolveTable = (tableName, fields, ctx) => {
   // Todo(AAA): we should be able to pass in an existing connection
   const session = enigma.create({
     schema: qixSchema,
-    url: `ws://${ctx.config.QIX_HOST}:9076/app/engineData`,
+    url: `ws://${ctx.config.QIX_HOST}:${ctx.config.QIX_PORT}/app/engineData`,
     createSocket: url => new WebSocket(url)
   });
 
