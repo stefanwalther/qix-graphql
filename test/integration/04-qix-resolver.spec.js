@@ -1,7 +1,7 @@
 const qixResolver = require('./../../src/lib/qix-graphql-schema-generator/qix-resolvers');
 const mockTablesAndKeys = require('./../fixtures/TablesAndKeys-CRM.json');
 
-describe.only('qixResolver', () => {
+describe('qixResolver', () => {
   describe('resolveTable', () => {
     xit('throws an error without context', () => {
       try {
@@ -12,7 +12,7 @@ describe.only('qixResolver', () => {
       }
     });
 
-    it.only('resolves the table', () => {
+    xit('resolves the table', () => {
       let ctx = {
         config: {
           QIX_HOST: 'localhost'

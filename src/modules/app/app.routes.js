@@ -1,16 +1,17 @@
 const express = require('express');
 const router = express.Router(); // eslint-disable-line new-cap
-const AppController = require('./app.controller');
 const graphqlHTTP = require('express-graphql');
 const logger = require('winster').instance();
+
 const defaultConfig = require('./../../config/default-config');
 const qixResolvers = require('./../../lib/qix-graphql-schema-generator/qix-resolvers');
-
+const AppController = require('./app.controller');
 const mockSchemas = require('./sample-schema');
 
 // Test with: documents%2FConsumer%20Goods%20Example.qvf
 // Todo: Since we do not need the app, we could simplify this ...
 function init(/* app */) {
+
   // Todo: Add a route for the root of /app to throw an error that qDocId is required
 
   router.get('/app/:qDocId', AppController.getById);
@@ -36,10 +37,7 @@ function init(/* app */) {
         })(req, res, next);
       })
       .catch(err => {
-        // Todo: Introduce ResResult
-        res.status(404);
-        res.json({error: err});
-        res.end();
+        res.status(404).json({error: err}).end();
         next();
       });
   });

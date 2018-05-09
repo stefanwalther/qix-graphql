@@ -8,7 +8,6 @@ class GraphQLController {
     });
     next();
   }
-
 }
 
 module.exports = GraphQLController;
