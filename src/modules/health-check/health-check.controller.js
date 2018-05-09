@@ -1,4 +1,4 @@
-const pkg = require('./../../../package.json');
+const pkg = require('read-pkg-up').sync().pkg;
 
 class HealthController {
 
@@ -7,7 +7,8 @@ class HealthController {
     res.send({
       ts: new Date().toJSON(),
       version: pkg.version,
-      name: pkg.name
+      name: pkg.name,
+      repository: pkg.repository
     });
   }
 }

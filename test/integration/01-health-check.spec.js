@@ -24,11 +24,13 @@ describe('INTEGRATION => health-check', () => {
       .get('/health-check')
       .expect(HttpStatus.OK)
       .then(result => {
+        console.log(result.body);
         expect(result).to.exist;
         expect(result).to.have.property('body');
         expect(result.body).to.have.property('ts').to.exist;
-        expect(result.body).to.have.property('version').to.be.equal(pkg.version);
         expect(result.body).to.have.property('name').to.be.equal(pkg.name);
+        expect(result.body).to.have.property('version').to.be.equal(pkg.version);
+        // expect(result.body).to.have.property('repository').to.exist; // Todo: check why this is not exposed
       });
   });
 });
