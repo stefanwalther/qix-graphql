@@ -1,7 +1,7 @@
 {
   "name": "qix-graphql",
   "version": "0.0.1",
-  "description": "GraphQL Server to Query the QIX (Qlik) Engine.",
+  "description": "GraphQL Server on top of the Qlik Associative Engine (QIX).",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -64,5 +64,24 @@
     "mocha": "^3.5.3",
     "nodemon": "^1.17.4",
     "supertest": "^3.0.0"
+  },
+  "verb": {
+    "run": true,
+    "toc": true,
+    "layout": "empty",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "related": {
+      "list": [ ]
+    },
+    "lint": {
+      "reflinks": true
+    },
+    "reflinks": [
+    ]
   }
 }
