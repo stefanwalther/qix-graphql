@@ -22,9 +22,9 @@
     "start:watch": "nodemon -L --watch ./src --exec npm run start",
     "start:watch:debug": "nodemon -L --watch ./src --exec node --inspect ./src/index.js",
     "test": "npm run test:unit && npm run test:integration && npm run coverage",
-    "test:watch": "export JWT_SECRET='My Secret' && nyc --reporter=lcov mocha './test/**/*.spec.js' --require './test/mocha.conf.js' --reporter=min --timeout 6000 --watch",
-    "test:integration": "export JWT_SECRET='My Secret' && nyc --reporter=lcov mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js' --timeout 6000",
-    "test:integration:watch": "export JWT_SECRET='My Secret' && npm run test:unit && nyc --reporter=lcov mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js' --reporter=min --timeout 6000 --watch",
+    "test:watch": "nyc --reporter=lcov mocha './test/**/*.spec.js' --require './test/mocha.conf.js' --reporter=min --timeout 6000 --watch",
+    "test:integration": "nyc --reporter=lcov mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js' --timeout 6000",
+    "test:integration:watch": "npm run test:unit && nyc --reporter=lcov mocha './test/integration/**/*.spec.js' --require './test/mocha.conf.js' --reporter=min --timeout 6000 --watch",
     "test:unit": "nyc --reporter=lcov mocha './test/unit/**/*.spec.js' --require './test/mocha.conf.js'",
     "coverage": "nyc report",
     "precommit": "npm run lint"

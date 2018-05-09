@@ -10,6 +10,7 @@ jobs:
       DOCKER_COMPOSE_URL: https://github.com/docker/compose/releases/download/1.19.0/docker-compose-Linux-x86_64
     steps:
       - checkout
+      - add_ssh_keys
       - run:
           name: Upgrade Docker
           command: |
@@ -49,9 +50,9 @@ jobs:
       - run:
           name: Build test image
           command: make build-test
-      - run:
-          name: Setting up test environment
-          command: make up-test
+#      - run:
+#          name: Setting up test environment
+#          command: make up-test
 #      - run:
 #          name: Lint
 #          command: docker-compose --f=docker-compose.unit-tests.yml run auth-service-test npm run lint
@@ -70,7 +71,7 @@ jobs:
 #      - run:
 #          name: CodeCov (upload integration tests)
 #          command: bash <(curl -s https://codecov.io/bash) -t cad03271-0cf0-49bd-8b82-a8d3639bda4f
-      - add_ssh_keys
+
 #      - deploy:
 #          name: Push image to Docker Hub
 #          command: |
