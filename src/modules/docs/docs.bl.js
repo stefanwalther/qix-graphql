@@ -1,8 +1,7 @@
 const enigma = require('enigma.js');
 const WebSocket = require('ws');
 const schema = require('enigma.js/schemas/12.20.0.json');
-const defaultConfig = require('./../../config/default-config');
-const _ = require('lodash');
+const config = require('./../../config/default-config');
 
 class DocsBL {
 
@@ -12,7 +11,7 @@ class DocsBL {
     const session = enigma.create({
       schema,
       // Todo: Make this configurable ...
-      url: `ws://${defaultConfig.QIX_HOST}:9076`,
+      url: `ws://${config.QIX_HOST}:${config.QIX_PORT}`,
       createSocket: url => new WebSocket(url)
     });
 
@@ -22,8 +21,7 @@ class DocsBL {
           .then(docs => {
             docs.map(doc => { // eslint-disable-line array-callback-return
               doc._links = {
-                // Todo: Make this configurable ...
-                _doc: `http://localhost:3004/app/${encodeURIComponent(doc.qDocId)}/graphiql`
+                _doc: `http://${config.HOST}:${config.PORT}/app/${encodeURIComponent(doc.qDocId)}/graphiql`
               };
             });
             retVal = docs;

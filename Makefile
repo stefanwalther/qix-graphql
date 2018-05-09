@@ -13,6 +13,14 @@ gen-readme-watch:
 	npm run docs:watch
 .PHONY: gen-readme-watch
 
+build:											## Build the docker image (production)
+	docker build --force-rm -t stefanwalther/qix-graphql -f Dockerfile.prod .
+.PHONY: build
+
+build-test:									## Build the docker image (test image)
+	docker build --force-rm -t stefanwalther/qix-graphql-test -f Dockerfile.test .
+.PHONY: build-test
+
 up-deps:										## Bring up all dependencies
 	docker-compose --f=./docker-compose.deps.yml up --build
 .PHONY: up-deps
@@ -28,3 +36,7 @@ up:													## Bring up the local demo-environment
 down:												## Tear down the local demo-environment
 	docker-compose --f=./docker-compose.yml down
 .PHONY: down
+
+run-test:										## Run tests
+	docker-compose --f=docker-compose.test.yml run qix-graphql-test npm run test
+.PHONY: run-test

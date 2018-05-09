@@ -1,0 +1,37 @@
+version: '3.3'
+
+volumes:
+  sense-docs:
+
+services:
+
+  qix:
+    container_name: qix
+    image: qlikcore/engine:12.166.0
+    command: [
+      "-S", "DocumentDirectory=/docs",
+      "-S", "AcceptEULA=yes"
+    ]
+    volumes:
+      - sense-docs:/docs
+    ports:
+      - "9076:9076"
+    expose:
+      - 9076
+
+  sense-docs:
+    image: stefanwalther/sense-docs
+    volumes:
+      - sense-docs:/opt/sense-docs/docs
+    tty: true
+
+  qix-graphql-test:
+    image: stefanwalther/qix-graphql-test
+    environment:
+      - NODE_ENV=test
+      - PORT=3004
+    depends_on:
+      - qix
+      - sense-docs
+    volumes:
+      - ./coverage:/opt/qix-graphql/coverage

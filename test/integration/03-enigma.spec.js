@@ -6,6 +6,8 @@ const enigma = require('enigma.js');
 const WebSocket = require('ws');
 const qixSchema = require('enigma.js/schemas/12.20.0.json');
 
+const config = require('./../../src/config/default-config');
+
 describe('INTEGRATION => enigma.js tests', () => {
 
   // let server = null;
@@ -28,7 +30,7 @@ describe('INTEGRATION => enigma.js tests', () => {
     before(() => {
       session = enigma.create({
         schema: qixSchema,
-        url: 'ws://localhost:9076/app/engineData',
+        url: `ws://${config.QIX_HOST}:${config.QIX_PORT}/app/engineData`,
         createSocket: url => new WebSocket(url)
       });
     });
@@ -54,7 +56,7 @@ describe('INTEGRATION => enigma.js tests', () => {
     before(() => {
       session = enigma.create({
         schema: qixSchema,
-        url: 'ws://localhost:9076/app/engineData',
+        url: `ws://${config.QIX_HOST}:${config.QIX_PORT}/app/engineData`,
         createSocket: url => new WebSocket(url)
       });
     });
@@ -64,6 +66,7 @@ describe('INTEGRATION => enigma.js tests', () => {
     it('open a doc', () => {
 
       return session.open()
+        // Todo (AAA): Replace hardcoded value and make this dynamic
         .then(global => global.openDoc({qDocName: '/docs/CRM.qvf', qNoData: false}))
         .then(doc => doc.getTablesAndKeys({qIncludeSysVars: true}))
         .catch(err => {
@@ -76,5 +79,4 @@ describe('INTEGRATION => enigma.js tests', () => {
 
     });
   });
-
 });
