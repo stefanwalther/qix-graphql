@@ -9,7 +9,7 @@ gen-readme:									## Generate README.md (using docker-verb)
 	docker run --rm -v ${PWD}:/opt/verb stefanwalther/verb
 .PHONY: gen-readme
 
-gen-readme-watch:
+gen-readme-watch:						## Watch docs and re-generate the README.md
 	npm run docs:watch
 .PHONY: gen-readme-watch
 
@@ -36,10 +36,6 @@ up:													## Bring up the local demo-environment
 down:												## Tear down the local demo-environment
 	docker-compose --f=./docker-compose.yml down
 .PHONY: down
-
-#up-test:										## Bring up the test environment (docker-compose up => docker-compose.test.yml)
-#	docker-compose --f=docker-compose.test.yml up -d
-#.PHONY: up-test
 
 run-test:										## Run tests
 	docker-compose --f=docker-compose.test.yml run qix-graphql-test npm run test
