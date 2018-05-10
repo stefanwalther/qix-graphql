@@ -3,7 +3,7 @@ const WebSocket = require('ws');
 const qixSchema = require('enigma.js/schemas/12.20.0.json');
 const QixGraphQlGenerator = require('./qix-graphql-generator');
 const logger = require('winster').instance();
-const config = require('./../../config/default-config');
+const config = require('./../../config/config');
 
 class SchemaGenerator {
 

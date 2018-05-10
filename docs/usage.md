@@ -7,7 +7,7 @@ $ docker-compose up
 
 ### Work with the environment scope
 
-Open the GraphiQl UI: http://localhost:3004/graphiql
+Open the GraphiQl UI: http://localhost:3004/env/graphiql
 
 Get the list of docs:
 

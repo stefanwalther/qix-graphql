@@ -1,7 +1,7 @@
 const enigma = require('enigma.js');
 const WebSocket = require('ws');
 const schema = require('enigma.js/schemas/12.20.0.json');
-const config = require('./../config/default-config'); // Todo: we ignore the context here!?!?!
+const config = require('./../config/config'); // Todo: we ignore the context here!?!?!
 
 class Prototyping {
 

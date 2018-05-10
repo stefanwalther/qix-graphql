@@ -3,48 +3,38 @@ const router = express.Router(); // eslint-disable-line new-cap
 const graphqlHTTP = require('express-graphql');
 const logger = require('winster').instance();
 
-const defaultConfig = require('./../../config/default-config');
+const defaultConfig = require('./../../config/config');
 const qixResolvers = require('./../../lib/qix-graphql-schema-generator/qix-resolvers');
 const AppController = require('./app.controller');
 const mockSchemas = require('./z-sample-schema'); // Todo (AAA): To be removed
 
-// Test with: documents%2FConsumer%20Goods%20Example.qvf
-// Todo: Since we do not need the app, we could simplify this ...
-function init(/* app */) {
+// Todo: Add a route for the root of /app to throw an error that qDocId is required
+router.get('/:qDocId', AppController.getById);
 
-  // Todo: Add a route for the root of /app to throw an error that qDocId is required
+/**
+ * Endpoint to generate a route for the given document.
+ */
+router.all('/:qDocId/graphiql', (req, res, next) => {
+  req.setTimeout(0);
+  // Console.log(app._router.stack);
 
-  router.get('/app/:qDocId', AppController.getById);
+  logger.verbose('/app/:qDocId/graphiql', req.params.qDocId);
 
-  /**
-   * Endpoint to generate a route for the given document.
-   */
-  router.all('/app/:qDocId/graphiql', (req, res, next) => {
-    req.setTimeout(0);
-    // Console.log(app._router.stack);
+  return mockSchemas.genSchema(req.params.qDocId)
+    .then(schema => {
+      return graphqlHTTP({
+        schema: schema,
+        graphiql: true,
+        context: {
+          config: defaultConfig,
+          qixResolvers: qixResolvers
+        }
+      })(req, res, next);
+    })
+    .catch(err => {
+      res.status(404).json({error: err}).end();
+      next();
+    });
+});
 
-    logger.verbose('/app/:qDocId/graphiql', req.params.qDocId);
-
-    return mockSchemas.genSchema(req.params.qDocId)
-      .then(schema => {
-        return graphqlHTTP({
-          schema: schema,
-          graphiql: true,
-          context: {
-            config: defaultConfig,
-            qixResolvers: qixResolvers
-          }
-        })(req, res, next);
-      })
-      .catch(err => {
-        res.status(404).json({error: err}).end();
-        next();
-      });
-  });
-
-  return router;
-}
-
-module.exports = {
-  init
-};
+module.exports = router;

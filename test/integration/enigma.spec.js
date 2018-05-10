@@ -3,7 +3,7 @@ const WebSocket = require('ws');
 // Todo: verify the schema, or probably even better: make this a global config
 const qixSchema = require('enigma.js/schemas/12.20.0.json');
 
-const config = require('./../../src/config/default-config');
+const config = require('./../../src/config/config');
 
 describe('INTEGRATION => enigma.js tests ==>', () => {
 

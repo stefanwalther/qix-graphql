@@ -2,39 +2,31 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const compression = require('compression');
 const helmet = require('helmet');
+const initializer = require('express-initializers');
 const logger = require('winster').instance();
+const path = require('path');
 
-const defaultConfig = require('./config/default-config');
-const routesConfig = require('./config/routes-config');
+const config = require('./config/config');
 
 class AppServer {
 
   constructor() {
     this.server = null;
     this.logger = logger;
-    this.config = defaultConfig;
+    this.config = config;
 
-    this._initApp();
-  }
-
-  /**
-   * Initialize the the express app.
-   *
-   * @private
-   */
-  _initApp() {
     this.app = express();
     this.app.use(compression());
     this.app.use(helmet());
     this.app.use(bodyParser.json());
-
-    routesConfig.init(this.app);
   }
 
   /**
    * Start the GraphQL server.
    */
   async start() {
+
+    await initializer(this.app, {directory: path.join(__dirname, 'initializers')});
 
     try {
       this.server = this.app.listen(this.config.PORT);
