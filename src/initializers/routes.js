@@ -7,7 +7,7 @@ const yaml = require('js-yaml');
 const pkg = require('read-pkg-up').sync().pkg;
 const graphqlHTTP = require('express-graphql');
 
-const graphQlSchema = require('./../modules/graphql/graphql.schema');
+const graphQlSchema = require('./../modules/env/env.schema');
 const healthCheckRoutes = require('./../modules/health-check/health-check.routes.js');
 const defaultConfig = require('./../config/config');
 

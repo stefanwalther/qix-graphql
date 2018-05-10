@@ -1,5 +1,5 @@
 
-Spin up the required containers using
+Spin up the demo-environment using
 
 ```
 $ docker-compose up
@@ -7,7 +7,7 @@ $ docker-compose up
 
 ### Work with the environment scope
 
-Open the GraphiQl UI: http://localhost:3004/env/graphiql
+Open the GraphiQl UI: http://localhost:3004/env/graphql
 
 Get the list of docs:
 
