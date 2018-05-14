@@ -96,7 +96,7 @@ This then allows you to get e.g. all content of a single table.
 **Example:**
 
 - Connect to `http://localhost:3004/app/%2Fdocs%2FCRM.qvf/graphiql`
-- Then execute the following query to get all data from the "Account" table (`NOTE: RIGHT NOW ONLY WORKS WITH THE CRM.qvf APP` ;-)):
+- Then execute the following query to get all data from the `account` table (`NOTE: RIGHT NOW ONLY WORKS WITH THE CRM.qvf APP` ;-)):
 
 ```
 {
