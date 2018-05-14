@@ -4,7 +4,7 @@ const mockTablesAndKeys = require('./../fixtures/TablesAndKeys-CRM.json');
 describe('qixResolver', () => {
   describe('resolveTable', () => {
 
-    it.only('throws an error without context', () => {
+    it('throws an error without context', () => {
       let fn = () => {
         qixResolver.resolveTable();
       };
