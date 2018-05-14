@@ -4,13 +4,11 @@ const mockTablesAndKeys = require('./../fixtures/TablesAndKeys-CRM.json');
 describe('qixResolver', () => {
   describe('resolveTable', () => {
 
-    xit('throws an error without context', () => {
-      try {
+    it.only('throws an error without context', () => {
+      let fn = () => {
         qixResolver.resolveTable();
-      } catch (e) {
-        expect(e).to.exist;
-        expect(e.message).to.contain('Cannot read property');
-      }
+      };
+      expect(fn).to.throw(Error, "Cannot read property 'config' of undefined");
     });
 
     // Todo: we have new params there, so this all needs to be fixed
