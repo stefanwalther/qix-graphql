@@ -55,7 +55,7 @@ const genSchema = qDocId => {
       .then(schema => {
         logger.verbose('==> OK, we got a schema');
         schemas[qDocId] = schema;
-        resolve(schema1);
+        resolve(schema);
       })
       .catch(err => {
         logger.error('We have an error creating the schema', err);
