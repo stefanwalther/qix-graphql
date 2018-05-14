@@ -6,9 +6,12 @@ const logger = require('winster').instance();
 
 // Todo: We should add better validation for the given context ...
 /**
+ * Resolver for getting the table data.
  *
- * @param ctx
- * @param {String} ctx.qName - Name of the table
+ * @param tableName
+ * @param fields
+ * @param {Object} ctx - The context.
+ * @return {Promise<T> | *}
  */
 const resolveTable = (tableName, fields, ctx) => {
 
@@ -22,10 +25,11 @@ const resolveTable = (tableName, fields, ctx) => {
     createSocket: url => new WebSocket(url)
   });
 
+  // Todo(AAA): We are not closing the session here
   return session.open()
     .then(global => global.openDoc({qDocName: docToOpen, qNoData: false}))
     .then(doc => {
-      console.log('doc', doc);
+      // Console.log('doc', doc);
       return doc.getTableData({
         qOffset: 0,
         qRows: 10,

@@ -80,6 +80,7 @@ class GraphQlGenerator {
   // Todo: Could make sense to refactor this to be a function to return the types.
   /**
    * Initializes the types based on this.options.tables_and_keys
+   *
    * @private
    */
   _initTypes() {
@@ -95,7 +96,7 @@ class GraphQlGenerator {
   }
 
   /**
-   * @Todo: Document this
+   * Instantiate the internal _tableCache object, which makes it easier to work with table of this document.
    *
    * @private
    */

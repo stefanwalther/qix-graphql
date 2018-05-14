@@ -3,13 +3,15 @@ const WebSocket = require('ws');
 const qixSchema = require('enigma.js/schemas/12.20.0.json');
 const QixGraphQlGenerator = require('./qix-graphql-generator');
 const logger = require('winster').instance();
+
 const config = require('./../../config/config');
 
 class SchemaGenerator {
 
   /**
+   * Generates a new GraphQL-Schema for a given document.
    *
-   * @param options
+   * @param {Object} options - Options for generating the schema.
    * @param {String} options.qDocId - The document Id.
    *
    * @return Promise
@@ -63,6 +65,7 @@ class SchemaGenerator {
         logger('There is another error here', err);
         throw err;
       });
+    // Todo: Has to be tested, when and how to keep/close sessions ...
     // .then(() => session.close());
   }
 }
