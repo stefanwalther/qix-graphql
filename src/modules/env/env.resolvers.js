@@ -1,10 +1,9 @@
 const enigma = require('enigma.js');
 const WebSocket = require('ws');
 const schema = require('enigma.js/schemas/12.20.0.json');
-const config = require('./../config/config'); // Todo: we ignore the context here!?!?!
+const config = require('./../../config/config'); // Todo: we ignore the context here!?!?!
 
-class Prototyping {
-
+class EnvResolvers {
   static getDocs() {
 
     let retVal = null;
@@ -34,12 +33,11 @@ class Prototyping {
   }
 
   static getDoc(qDocId) {
-    return Prototyping.getDocs()
+    return EnvResolvers.getDocs()
       .then(docs => {
         return docs.filter(doc => doc.qDocId === qDocId)[0];
       });
   }
-
 }
 
-module.exports = Prototyping;
+module.exports = EnvResolvers;

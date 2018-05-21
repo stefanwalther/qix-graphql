@@ -1,6 +1,4 @@
-// Todo: Probably the entire module can be removed or simplified ....
-const Prototyping = require('./../prototyping-to-be-moved');
-
+const EnvResolvers = require('./env.resolvers');
 const {
   GraphQLNonNull,
   GraphQLObjectType,
@@ -11,6 +9,7 @@ const {
   GraphQLFloat
 } = require('graphql');
 
+// Todo: implement additional fields
 const TableRecord = new GraphQLObjectType({
   name: 'TableRecord',
   fields: {
@@ -26,6 +25,7 @@ const TableRecord = new GraphQLObjectType({
   }
 });
 
+// Todo: implement additional fields
 const TableAndKeys = new GraphQLObjectType({
   name: 'TableAndKeys',
   fields: {
@@ -88,14 +88,13 @@ const RootQueryType = new GraphQLObjectType({
         }
       },
       resolve: (obj, args /* , ctx */) => {
-        console.log('args', args);
-        return Prototyping.getDoc(args.qDocId);
+        return EnvResolvers.getDoc(args.qDocId);
       }
     },
     docs: {
       type: new GraphQLList(DocType),
       resolve: (/* obj, args, ctx */) => {
-        return Prototyping.getDocs();
+        return EnvResolvers.getDocs();
       }
     },
     docfields: {
@@ -105,6 +104,7 @@ const RootQueryType = new GraphQLObjectType({
           type: new GraphQLNonNull(GraphQLString)
         }
       },
+      // Todo: implement additional fields
       resolve: (/* obj, args, ctx */) => {
         return {
           qtr: [{
