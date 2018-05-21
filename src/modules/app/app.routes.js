@@ -7,7 +7,6 @@ const defaultConfig = require('./../../config/config');
 const qixResolvers = require('./../../lib/qix-graphql-schema-generator/qix-resolvers');
 const AppController = require('./app.controller');
 const AppSchema = require('./app.schema');
-// Const mockSchemas = require('./z-sample-schema'); // Todo (AAA): To be removed
 
 // Todo: Add a route for the root of /app to throw an error that qDocId is required
 router.get('/:qDocId', AppController.getById);

@@ -126,7 +126,8 @@ class GraphQlGenerator {
       r[lib.sanitize(t.qName)] = {
         type: new GraphQLList(inputType),
         resolve: (obj, args, ctx) => {
-          return ctx.qixResolvers.resolveTable(tableName, fields, ctx); // Todo(AAA): Here we can potentially pass in the list of fields
+          // Todo(AAA): Here we can potentially pass in the list of fields
+          return ctx.qixResolvers.resolveTable(this.options.qDocId, tableName, fields, ctx);
         }
       };
     });

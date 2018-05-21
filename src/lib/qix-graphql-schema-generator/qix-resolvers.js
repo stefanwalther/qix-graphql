@@ -13,10 +13,11 @@ const logger = require('winster').instance();
  * @param {Object} ctx - The context.
  * @return {Promise<T> | *}
  */
-const resolveTable = (tableName, fields, ctx) => {
+const resolveTable = (docId, tableName, fields, ctx) => {
 
   // Todo(AAA): All hardcoded values, need to be fixed
-  let docToOpen = '/docs/CRM.qvf';
+  // let docToOpen = '/docs/CRM.qvf';
+  let docToOpen = docId;
 
   // Todo(AAA): we should be able to pass in an existing connection
   const session = enigma.create({
@@ -30,6 +31,8 @@ const resolveTable = (tableName, fields, ctx) => {
     .then(global => global.openDoc({qDocName: docToOpen, qNoData: false}))
     .then(doc => {
       // Console.log('doc', doc);
+
+      // Todo: Paging needs to be implemented here
       return doc.getTableData({
         qOffset: 0,
         qRows: 10,
@@ -60,7 +63,7 @@ const resolveTable = (tableName, fields, ctx) => {
       logger.error('Err in getTablesAndKeys', err);
       throw err;
     }, err => {
-      logger('There is another error here', err);
+      logger.error('There is another error here', err);
       throw err;
     });
 };

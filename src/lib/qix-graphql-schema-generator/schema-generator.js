@@ -64,9 +64,9 @@ class SchemaGenerator {
       }, err => {
         logger('There is another error here', err);
         throw err;
-      });
+      })
     // Todo: Has to be tested, when and how to keep/close sessions ...
-    // .then(() => session.close());
+      .then(() => session.close());
   }
 }
 
