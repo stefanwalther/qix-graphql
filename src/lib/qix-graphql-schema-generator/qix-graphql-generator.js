@@ -86,8 +86,8 @@ class GraphQlGenerator {
   _initTypes() {
     // Console.log('generateTypes.tables_and_keys.qtr', this.options.tables_and_keys.qtr);
     this.options.tables_and_keys.qtr.forEach(t => {
-      this._types[lib.normalize(t.qName)] = new GraphQLObjectType({
-        name: lib.normalize(t.qName),
+      this._types[lib.sanitize(t.qName)] = new GraphQLObjectType({
+        name: lib.sanitize(t.qName),
         description: `${t.qName} table`,
         fields: this._getFields(t)
       });
@@ -104,9 +104,9 @@ class GraphQlGenerator {
     this.options.tables_and_keys.qtr.forEach(t => {
       let fields = [];
       t.qFields.forEach(f => {
-        fields.push(lib.normalize(f.qName));
+        fields.push(lib.sanitize(f.qName));
       });
-      this._tableCache[lib.normalize(t.qName)] = fields;
+      this._tableCache[lib.sanitize(t.qName)] = fields;
     });
   }
 
@@ -120,10 +120,10 @@ class GraphQlGenerator {
     let r = {};
 
     this.options.tables_and_keys.qtr.forEach(t => {
-      let tableName = lib.normalize(t.qName);
+      let tableName = lib.sanitize(t.qName);
       let inputType = this._types[tableName];
       let fields = this._tableCache[tableName];
-      r[lib.normalize(t.qName)] = {
+      r[lib.sanitize(t.qName)] = {
         type: new GraphQLList(inputType),
         resolve: (obj, args, ctx) => {
           return ctx.qixResolvers.resolveTable(tableName, fields, ctx); // Todo(AAA): Here we can potentially pass in the list of fields
@@ -146,7 +146,7 @@ class GraphQlGenerator {
     let r = {};
 
     table.qFields.forEach(f => {
-      r[lib.normalize(f.qName)] = {
+      r[lib.sanitize(f.qName)] = {
         type: GraphQlGenerator._matchTypeFromTags(f.qTags)
       };
     });
