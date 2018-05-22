@@ -3,7 +3,7 @@ const AppServer = require('./../../src/app-server');
 const HttpStatusCodes = require('http-status-codes');
 const ql = require('superagent-graphql');
 
-describe('Integration tests: With Global scope', () => {
+describe('Integration tests: Global scope ', () => {
 
   let server;
   let appServer;
