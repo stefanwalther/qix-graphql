@@ -29,6 +29,7 @@ services:
     container_name: qix-graphql
     build:
       context: .
+      dockerfile: Dockerfile.prod
     ports:
       - "3004:3004"
     environment:

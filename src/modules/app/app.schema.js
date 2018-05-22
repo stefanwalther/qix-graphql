@@ -29,4 +29,4 @@ class AppSchema {
 
 }
 
-module.export = AppSchema;
+module.exports = AppSchema;

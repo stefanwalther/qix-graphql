@@ -1,45 +1,26 @@
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
 const router = express.Router(); // eslint-disable-line new-cap
-const swaggerUi = require('swagger-ui-express');
-const yaml = require('js-yaml');
-const pkg = require('read-pkg-up').sync().pkg;
-const graphqlHTTP = require('express-graphql');
 
-const graphQlSchema = require('./../modules/env/env.schema');
-const healthCheckRoutes = require('./../modules/health-check/health-check.routes.js');
-const defaultConfig = require('./../config/config');
-
-const appRoutes = require('./../modules/app/app.routes');
-
-// Api-docs
-const swaggerDoc = yaml.safeLoad(fs.readFileSync(path.join(__dirname, './../modules/api-docs/api-docs.yml'), 'utf8'));
-swaggerDoc.info.version = pkg.version;
-router.use('/api-docs/', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+// API Docs
+// Todo: Just crap for now
+// router.use('/', require('./../modules/api-docs/api-docs.routes'));
 
 // Health-check
-router.use('/', healthCheckRoutes);
+router.use('/', require('./../modules/health-check/health-check.routes.js'));
 
-// Env graphql
-router.use('/env/graphql', graphqlHTTP({
-  schema: graphQlSchema,
-  graphiql: true,
-  context: {
-    config: defaultConfig
-  }
-}));
+// Global
+router.use('/', require('./../modules/global/global.routes'));
 
 // Router.use('/app/:id', );
-router.use('/app', appRoutes);
+router.use('/app', require('./../modules/app/app.routes'));
 
 // Fallback / root
 router.use('/', (req, res) => {
   res.json({
     _links: {
       _self: 'http://localhost:3004',
-      'api-docs': 'http://localhost:3004/api-docs',
-      env: 'http://localhost:3004/env/graphql',
+      // 'api-docs': 'http://localhost:3004/api-docs',
+      global: 'http://localhost:3004/global/graphql',
       'health-check': 'http://localhost:3004/health-check'
     }
   });

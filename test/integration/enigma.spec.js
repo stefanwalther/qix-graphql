@@ -5,7 +5,7 @@ const qixSchema = require('enigma.js/schemas/12.20.0.json');
 
 const config = require('./../../src/config/config');
 
-describe('INTEGRATION => enigma.js tests ==>', () => {
+xdescribe('INTEGRATION => enigma.js tests ==>', () => {
 
   describe('SESSION', () => {
 

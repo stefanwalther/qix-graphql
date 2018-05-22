@@ -30,11 +30,11 @@ down-deps:									## Tear down all dependencies
 .PHONY: down-deps
 
 up:													## Bring up the local demo-environment
-	docker-compose --f=./docker-compose.yml up --build
+	docker-compose --f=./docker-compose.dev.yml up --build
 .PHONY: up
 
 down:												## Tear down the local demo-environment
-	docker-compose --f=./docker-compose.yml down
+	docker-compose --f=./docker-compose.dev.yml down
 .PHONY: down
 
 run-test:										## Run tests

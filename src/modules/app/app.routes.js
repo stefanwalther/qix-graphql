@@ -33,7 +33,7 @@ router.all('/:qDocId/graphiql', (req, res, next) => {
     })
     .catch(err => {
       res.status(404).json({error: err}).end();
-      next();
+      // Next();
     });
 });
 
