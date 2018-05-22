@@ -19,7 +19,7 @@ jobs:
             sudo service docker restart
       - run:
           name: Login to Docker
-          command: docker login -u "$DOCKER_USER" --password "$DOCKER_PASS"
+          command: docker login -u "$DOCKER_USER" --password  "$DOCKER_PASS"
       - run:
           name: Pull public docker images in the background
           background: true
