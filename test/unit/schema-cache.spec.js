@@ -27,6 +27,18 @@ describe('UNIT => schema-cache', () => {
     schemaCache.add(qDocId, obj);
     expect(schemaCache.count()).to.be.equal(1);
     expect(schemaCache.find(qDocId)).to.be.equal(obj);
-  })
+  });
+
+  it.only('allows to check if an item exists', () => {
+    const qDocId = 'foo';
+    const obj = {
+      foo: 'bar'
+    };
+    expect(schemaCache.count()).to.be.equal(0);
+    schemaCache.add(qDocId, obj);
+    expect(schemaCache.count()).to.be.equal(1);
+    expect(schemaCache.find(qDocId)).to.be.equal(obj);
+    expect(schemaCache.exists(qDocId)).to.be.true;
+  });
 
 });

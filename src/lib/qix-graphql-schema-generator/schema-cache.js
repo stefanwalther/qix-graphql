@@ -17,8 +17,13 @@ class SchemaCache {
     }
   }
 
+  /**
+   * Returns if the doc with the given qDocId exists in cache or not.
+   * @param qDocId
+   * @returns {boolean}
+   */
   exists(qDocId) {
-    return (this.cache[qDocId] === null);
+    return (this.cache[qDocId] !== (null || undefined));
   }
 
   /**
