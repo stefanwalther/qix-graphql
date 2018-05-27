@@ -12,7 +12,7 @@ router.use('/', require('./../modules/health-check/health-check.routes.js'));
 router.use('/', require('./../modules/global/global.routes'));
 
 // Router.use('/app/:id', );
-router.use('/app', require('./../modules/app/app.routes'));
+router.use('/', require('./../modules/app/app.routes'));
 
 // Fallback / root
 router.use('/', (req, res) => {
