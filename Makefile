@@ -1,4 +1,4 @@
-QIX_ENGINE_VER := 12.171.0
+QIX_ENGINE_VER := "12.171.0"
 
 help:												## Show this help.
 	@echo ''

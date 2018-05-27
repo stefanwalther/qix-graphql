@@ -7,7 +7,7 @@ services:
 
   qix:
     container_name: qix
-    image: qlikcore/engine:${QIX_ENGINE_VER:latest}
+    image: "qlikcore/engine:${QIX_ENGINE_VER:-latest}"
     command: [
       "-S", "DocumentDirectory=/docs",
       "-S", "AcceptEULA=yes"
