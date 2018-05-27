@@ -29,7 +29,7 @@ describe('UNIT => schema-cache', () => {
     expect(schemaCache.find(qDocId)).to.be.equal(obj);
   });
 
-  it.only('allows to check if an item exists', () => {
+  it('allows to check if an item exists', () => {
     const qDocId = 'foo';
     const obj = {
       foo: 'bar'

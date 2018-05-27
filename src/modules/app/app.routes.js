@@ -5,20 +5,19 @@ const logger = require('winster').instance();
 
 const defaultConfig = require('./../../config/config');
 const qixResolvers = require('./../../lib/qix-graphql-schema-generator/qix-resolvers');
-const AppController = require('./app.controller');
+// Const AppController = require('./app.controller');
 const AppSchema = require('./app.schema');
-
-// Todo: Add a route for the root of /app to throw an error that qDocId is required
-router.get('/:qDocId', AppController.getById);
 
 /**
  * Endpoint to generate a route for the given document.
  */
-router.all('/:qDocId/graphiql', (req, res, next) => {
-  req.setTimeout(0);
+router.all('/app/:qDocId/graphql', (req, res, next) => {
+  // Req.setTimeout(0);
   // Console.log(app._router.stack);
 
-  logger.verbose('/app/:qDocId/graphiql', req.params.qDocId);
+  logger.verbose('/app/:qDocId/graphql', req.params.qDocId);
+
+  // Let schema = await AppSchema.generateAppSchema(req.param.qDocId);
 
   return AppSchema.genSchema(req.params.qDocId)
     .then(schema => {
@@ -33,7 +32,6 @@ router.all('/:qDocId/graphiql', (req, res, next) => {
     })
     .catch(err => {
       res.status(404).json({error: err}).end();
-      // Next();
     });
 });
 
