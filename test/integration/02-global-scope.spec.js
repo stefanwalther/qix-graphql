@@ -3,7 +3,7 @@ const AppServer = require('./../../src/app-server');
 const HttpStatusCodes = require('http-status-codes');
 const ql = require('superagent-graphql');
 
-describe('Integration tests: Global scope ', () => {
+describe('INTEGRATION => global scope ', () => {
 
   let server;
   let appServer;
@@ -18,7 +18,7 @@ describe('Integration tests: Global scope ', () => {
     await appServer.stop();
   });
 
-  it('allows to query docs', async () => {
+  xit('allows to query docs', async () => {
 
     const query = `{
                      docs {
