@@ -1,4 +1,4 @@
-const enigma = require('enigma.js');
+const enigma = require('../../../node_modules/enigma.js/enigma');
 const WebSocket = require('ws');
 // Todo: check the version of the schema we should use with the given version of the QIX engine
 const qixSchema = require('enigma.js/schemas/12.20.0.json');

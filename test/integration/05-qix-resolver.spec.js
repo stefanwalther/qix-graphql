@@ -1,4 +1,4 @@
-const qixResolver = require('./../../src/lib/qix-graphql-schema-generator/qix-resolvers');
+const qixResolver = require('../../src/modules/app/qix-resolvers');
 const mockTablesAndKeys = require('./../fixtures/TablesAndKeys-CRM.json');
 
 describe('qixResolver', () => {

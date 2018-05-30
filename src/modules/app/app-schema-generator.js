@@ -1,5 +1,5 @@
 const logger = require('winster').instance(); // eslint-disable-line no-unused-vars
-const lib = require('./lib');
+const lib = require('../../lib/lib');
 const {
   GraphQLSchema,
   GraphQLObjectType,
@@ -65,14 +65,13 @@ class GraphQlGenerator {
   }
 
   /**
-   * @Todo: Document this
+   * Return the root query for the given document.
    *
-   * @param types
    * @private
    */
   _getRootQuery() {
     return new GraphQLObjectType({
-      name: 'root',
+      name: 'Tables',
       fields: this._getTables()
     });
   }
