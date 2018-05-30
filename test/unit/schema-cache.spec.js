@@ -1,4 +1,4 @@
-const schemaCache = require('./../../src/lib/qix-graphql-schema-generator/schema-cache');
+const schemaCache = require('../../src/lib/schema-cache');
 
 describe('UNIT => schema-cache', () => {
 

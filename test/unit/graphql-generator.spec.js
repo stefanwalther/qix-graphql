@@ -55,15 +55,10 @@ describe('UNIT => qix-graphql-generator', () => {
         expect(g._types).to.exist;
         expect(g._types).to.contain.property('account');
       } catch (e) {
-        expect(e).not.to.throw();
+        expect(e).to.not.exist;
       }
     });
   });
 
-  xdescribe('=> getSchema', () => {
-    it('generates a schema', () => {
-      expect(true).to.be.false;
-    });
-  });
 });
 
