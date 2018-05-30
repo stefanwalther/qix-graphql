@@ -1,6 +1,4 @@
-// Todo: Probably the entire module can be removed or simplified ....
-const DocsBL = require('./../docs/docs.bl');
-
+const EnvResolvers = require('./global.resolvers');
 const {
   GraphQLNonNull,
   GraphQLObjectType,
@@ -11,6 +9,7 @@ const {
   GraphQLFloat
 } = require('graphql');
 
+// Todo: implement additional fields
 const TableRecord = new GraphQLObjectType({
   name: 'TableRecord',
   fields: {
@@ -26,6 +25,8 @@ const TableRecord = new GraphQLObjectType({
   }
 });
 
+// Todo: implement additional fields
+// eslint-disable-next-line no-unused-vars
 const TableAndKeys = new GraphQLObjectType({
   name: 'TableAndKeys',
   fields: {
@@ -39,11 +40,17 @@ const DocType = new GraphQLObjectType({
   name: 'DocType',
 
   fields: {
-    qDocName: {type: GraphQLString},
+    qDocName: {
+      type: GraphQLString,
+      description: 'Name of the document'
+    },
     qConnectedUsers: {type: GraphQLInt},
     qFileTime: {type: GraphQLFloat},
     qFileSize: {type: GraphQLFloat},
-    qDocId: {type: GraphQLString},
+    qDocId: {
+      type: GraphQLString,
+      description: 'Id of the document'
+    },
     qMeta: {
       type: new GraphQLObjectType({
         name: 'qMeta',
@@ -55,7 +62,10 @@ const DocType = new GraphQLObjectType({
       })
     },
     qLastReloadTime: {type: GraphQLString},
-    qTitle: {type: GraphQLString},
+    qTitle: {
+      type: GraphQLString,
+      description: 'Title of the document'
+    },
     qThumbNail: {
       type: new GraphQLObjectType({
         name: 'qThumbnail',
@@ -68,7 +78,6 @@ const DocType = new GraphQLObjectType({
       type: new GraphQLObjectType({
         name: '_links',
         fields: {
-          _self: {type: GraphQLString},
           _doc: {type: GraphQLString}
         }
       })
@@ -77,7 +86,7 @@ const DocType = new GraphQLObjectType({
 });
 
 const RootQueryType = new GraphQLObjectType({
-  name: 'root',
+  name: 'Global',
   fields: {
     doc: {
       type: DocType,
@@ -88,29 +97,14 @@ const RootQueryType = new GraphQLObjectType({
         }
       },
       resolve: (obj, args /* , ctx */) => {
-        console.log('args', args);
-        return DocsBL.getDoc(args.qDocId);
+        return EnvResolvers.getDoc(args.qDocId);
       }
     },
     docs: {
       type: new GraphQLList(DocType),
+      description: 'Return all Qlik documents available in the current environment.',
       resolve: (/* obj, args, ctx */) => {
-        return DocsBL.getDocs();
-      }
-    },
-    docfields: {
-      type: TableAndKeys,
-      args: {
-        qDocId: {
-          type: new GraphQLNonNull(GraphQLString)
-        }
-      },
-      resolve: (/* obj, args, ctx */) => {
-        return {
-          qtr: [{
-            qName: 'Test'
-          }]
-        };
+        return EnvResolvers.getDocs();
       }
     }
   }

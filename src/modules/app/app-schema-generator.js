@@ -1,5 +1,5 @@
 const logger = require('winster').instance(); // eslint-disable-line no-unused-vars
-const lib = require('./lib');
+const lib = require('../../lib/lib');
 const {
   GraphQLSchema,
   GraphQLObjectType,
@@ -65,13 +65,13 @@ class GraphQlGenerator {
   }
 
   /**
+   * Return the root query for the given document.
    *
-   * @param types
    * @private
    */
   _getRootQuery() {
     return new GraphQLObjectType({
-      name: 'root',
+      name: 'Tables',
       fields: this._getTables()
     });
   }
@@ -79,13 +79,14 @@ class GraphQlGenerator {
   // Todo: Could make sense to refactor this to be a function to return the types.
   /**
    * Initializes the types based on this.options.tables_and_keys
+   *
    * @private
    */
   _initTypes() {
     // Console.log('generateTypes.tables_and_keys.qtr', this.options.tables_and_keys.qtr);
     this.options.tables_and_keys.qtr.forEach(t => {
-      this._types[lib.normalize(t.qName)] = new GraphQLObjectType({
-        name: lib.normalize(t.qName),
+      this._types[lib.sanitize(t.qName)] = new GraphQLObjectType({
+        name: lib.sanitize(t.qName),
         description: `${t.qName} table`,
         fields: this._getFields(t)
       });
@@ -93,17 +94,23 @@ class GraphQlGenerator {
     // This.logger.verbose('this._types', this._types);
   }
 
+  /**
+   * Instantiate the internal _tableCache object, which makes it easier to work with table of this document.
+   *
+   * @private
+   */
   _initTableCache() {
     this.options.tables_and_keys.qtr.forEach(t => {
       let fields = [];
       t.qFields.forEach(f => {
-        fields.push(lib.normalize(f.qName));
+        fields.push(lib.sanitize(f.qName));
       });
-      this._tableCache[lib.normalize(t.qName)] = fields;
+      this._tableCache[lib.sanitize(t.qName)] = fields;
     });
   }
 
   /**
+   * @Todo: Document this
    *
    * @returns {{}}
    * @private
@@ -112,13 +119,14 @@ class GraphQlGenerator {
     let r = {};
 
     this.options.tables_and_keys.qtr.forEach(t => {
-      let tableName = lib.normalize(t.qName);
+      let tableName = lib.sanitize(t.qName);
       let inputType = this._types[tableName];
       let fields = this._tableCache[tableName];
-      r[lib.normalize(t.qName)] = {
+      r[lib.sanitize(t.qName)] = {
         type: new GraphQLList(inputType),
         resolve: (obj, args, ctx) => {
-          return ctx.qixResolvers.resolveTable(tableName, fields, ctx); // Todo(AAA): Here we can potentially pass in the list of fields
+          // Todo(AAA): Here we can potentially pass in the list of fields
+          return ctx.qixResolvers.resolveTable(this.options.qDocId, tableName, fields, ctx);
         }
       };
     });
@@ -128,15 +136,17 @@ class GraphQlGenerator {
 
   /**
    * Return the fields for a given table.
-   * @param table
-   * @returns {{}}
+   *
+   * @param {string} table - The name of the table.
+   *
+   * @returns {object}
    * @private
    */
   _getFields(table) {
     let r = {};
 
     table.qFields.forEach(f => {
-      r[lib.normalize(f.qName)] = {
+      r[lib.sanitize(f.qName)] = {
         type: GraphQlGenerator._matchTypeFromTags(f.qTags)
       };
     });

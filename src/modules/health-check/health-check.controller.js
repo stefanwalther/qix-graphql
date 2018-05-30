@@ -1,17 +1,16 @@
-const pkg = require('./../../../package.json');
+const pkg = require('read-pkg-up').sync().pkg;
 
 class HealthController {
 
-  static get(req, res, next) {
+  static get(req, res) {
     res.setHeader('Content-Type', 'application/json');
     res.send({
       ts: new Date().toJSON(),
       version: pkg.version,
-      name: pkg.name
+      name: pkg.name,
+      repository: pkg.repository
     });
-    next();
   }
-
 }
 
 module.exports = HealthController;

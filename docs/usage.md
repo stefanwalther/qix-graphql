@@ -1,5 +1,5 @@
 
-Spin up the required containers using
+Spin up the demo-environment using
 
 ```
 $ docker-compose up
@@ -7,7 +7,7 @@ $ docker-compose up
 
 ### Work with the environment scope
 
-Open the GraphiQl UI: http://localhost:3004/graphiql
+Open the GraphiQl UI: http://localhost:3004/env/graphql
 
 Get the list of docs:
 
@@ -96,7 +96,7 @@ This then allows you to get e.g. all content of a single table.
 **Example:**
 
 - Connect to `http://localhost:3004/app/%2Fdocs%2FCRM.qvf/graphiql`
-- Then execute the following query to get all data from the "Account" table (`NOTE: RIGHT NOW ONLY WORKS WITH THE CRM.qvf APP` ;-)):
+- Then execute the following query to get all data from the `account` table (`NOTE: RIGHT NOW ONLY WORKS WITH THE CRM.qvf APP` ;-)):
 
 ```
 {

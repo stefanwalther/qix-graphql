@@ -1,3 +1,6 @@
 {
-  "extends": "eslint-config-space-single/esnext"
+  "extends": "eslint-config-space-single/esnext",
+  "rules": {
+    "no-warning-comments": "off"
+  }
 }

@@ -1,30 +1,38 @@
-const enigma = require('enigma.js');
+const enigma = require('../../../node_modules/enigma.js/enigma');
 const WebSocket = require('ws');
+// Todo: check the version of the schema we should use with the given version of the QIX engine
 const qixSchema = require('enigma.js/schemas/12.20.0.json');
 const logger = require('winster').instance();
 
 // Todo: We should add better validation for the given context ...
 /**
+ * Resolver for getting the table data.
  *
- * @param ctx
- * @param {String} ctx.qName - Name of the table
+ * @param tableName
+ * @param fields
+ * @param {Object} ctx - The context.
+ * @return {Promise<T> | *}
  */
-const resolveTable = (tableName, fields, ctx) => {
+const resolveTable = (docId, tableName, fields, ctx) => {
 
   // Todo(AAA): All hardcoded values, need to be fixed
-  let docToOpen = '/docs/CRM.qvf';
+  // let docToOpen = '/docs/CRM.qvf';
+  let docToOpen = docId;
 
   // Todo(AAA): we should be able to pass in an existing connection
   const session = enigma.create({
     schema: qixSchema,
-    url: `ws://${ctx.config.QIX_HOST}:9076/app/engineData`,
+    url: `ws://${ctx.config.QIX_HOST}:${ctx.config.QIX_PORT}/app/engineData`,
     createSocket: url => new WebSocket(url)
   });
 
+  // Todo(AAA): We are not closing the session here
   return session.open()
     .then(global => global.openDoc({qDocName: docToOpen, qNoData: false}))
     .then(doc => {
-      console.log('doc', doc);
+      // Console.log('doc', doc);
+
+      // Todo: Paging needs to be implemented here
       return doc.getTableData({
         qOffset: 0,
         qRows: 10,
@@ -55,7 +63,7 @@ const resolveTable = (tableName, fields, ctx) => {
       logger.error('Err in getTablesAndKeys', err);
       throw err;
     }, err => {
-      logger('There is another error here', err);
+      logger.error('There is another error here', err);
       throw err;
     });
 };

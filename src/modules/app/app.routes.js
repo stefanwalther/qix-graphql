@@ -1,50 +1,37 @@
 const express = require('express');
 const router = express.Router(); // eslint-disable-line new-cap
 const graphqlHTTP = require('express-graphql');
-const logger = require('winster').instance();
+const ExpressResult = require('express-result');
 
-const defaultConfig = require('./../../config/default-config');
-const qixResolvers = require('./../../lib/qix-graphql-schema-generator/qix-resolvers');
-const AppController = require('./app.controller');
-const mockSchemas = require('./sample-schema');
+const defaultConfig = require('./../../config/config');
+const qixResolvers = require('./app.resolvers');
+// Const AppController = require('./app.controller');
+const AppSchema = require('./app.schema');
 
-// Test with: documents%2FConsumer%20Goods%20Example.qvf
-// Todo: Since we do not need the app, we could simplify this ...
-function init(/* app */) {
+/**
+ * Endpoint to generate a route for the given document.
+ */
+router.all('/app/:qDocId/graphql', async (req, res) => {
 
-  // Todo: Add a route for the root of /app to throw an error that qDocId is required
+  try {
+    let schema = await AppSchema.generateAppSchema(req.params.qDocId);
+    return graphqlHTTP({
+      schema: schema,
+      graphiql: true,
+      context: {
+        config: defaultConfig,
+        qixResolvers: qixResolvers
+      }
+    })(req, res);
+  } catch (err) {
+    let e = {
+      error: {
+        message: `Error creating the app-schema for <${req.params.qDocId}>`,
+        trace: String(err)
+      }
+    };
+    ExpressResult.error(res, e);
+  }
+});
 
-  router.get('/app/:qDocId', AppController.getById);
-
-  /**
-   * Endpoint to generate a route for the given document.
-   */
-  router.all('/app/:qDocId/graphiql', (req, res, next) => {
-    req.setTimeout(0);
-    // Console.log(app._router.stack);
-
-    logger.verbose('/app/:qDocId/graphiql', req.params.qDocId);
-
-    return mockSchemas.genSchema(req.params.qDocId)
-      .then(schema => {
-        return graphqlHTTP({
-          schema: schema,
-          graphiql: true,
-          context: {
-            config: defaultConfig,
-            qixResolvers: qixResolvers
-          }
-        })(req, res, next);
-      })
-      .catch(err => {
-        res.status(404).json({error: err}).end();
-        next();
-      });
-  });
-
-  return router;
-}
-
-module.exports = {
-  init
-};
+module.exports = router;

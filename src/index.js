@@ -1,4 +1,6 @@
 const AppServer = require('./app-server');
 
-let appServer = new AppServer();
-appServer.start();
+(async () => {
+  let appServer = new AppServer();
+  await appServer.start();
+})();
