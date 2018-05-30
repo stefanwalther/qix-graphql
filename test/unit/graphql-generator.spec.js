@@ -1,4 +1,4 @@
-const QixGraphQlGenerator = require('./../../src/lib/qix-graphql-schema-generator/qix-graphql-generator');
+const AppSchemaGenerator = require('./../../src/modules/app/app-schema-generator');
 const mockTablesAndKeys = require('./../fixtures/TablesAndKeys-CRM.json');
 
 describe('UNIT => qix-graphql-generator', () => {
@@ -7,14 +7,14 @@ describe('UNIT => qix-graphql-generator', () => {
 
     it('should throw an error if options.qDocId is not provided', () => {
       let fn = () => {
-        new QixGraphQlGenerator({});
+        new AppSchemaGenerator({});
       };
       expect(fn).to.throw(Error, 'qDocId is missing');
     });
 
     it('should throw an error if options.qDocId is not provided', () => {
       let fn = () => {
-        new QixGraphQlGenerator({
+        new AppSchemaGenerator({
           qDocId: 'foo'
         });
       };
@@ -23,7 +23,7 @@ describe('UNIT => qix-graphql-generator', () => {
 
     it('should throw an error if options.qDocId is not provided', () => {
       let fn = () => {
-        new QixGraphQlGenerator({
+        new AppSchemaGenerator({
           qDocId: 'foo',
           tables_and_keys: {}
         });
@@ -33,7 +33,7 @@ describe('UNIT => qix-graphql-generator', () => {
 
     it('should NOT throw an error if everything is provided as expected', () => {
       let fn = () => {
-        new QixGraphQlGenerator({
+        new AppSchemaGenerator({
           qDocId: 'foo',
           tables_and_keys: {
             qtr: []
@@ -47,7 +47,7 @@ describe('UNIT => qix-graphql-generator', () => {
   describe('=> _generateTypes', () => {
     it('should succeed', () => {
       try {
-        let g = new QixGraphQlGenerator({
+        let g = new AppSchemaGenerator({
           qDocId: 'foo',
           tables_and_keys: mockTablesAndKeys
         });

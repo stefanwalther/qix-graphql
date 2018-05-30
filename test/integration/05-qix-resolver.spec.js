@@ -1,8 +1,8 @@
-const qixResolver = require('../../src/modules/app/qix-resolvers');
+const qixResolver = require('../../src/modules/app/app.resolvers');
 const mockTablesAndKeys = require('./../fixtures/TablesAndKeys-CRM.json');
 
 describe('qixResolver', () => {
-  describe('resolveTable', () => {
+  xdescribe('resolveTable', () => {
 
     it('throws an error without context', () => {
       let fn = () => {

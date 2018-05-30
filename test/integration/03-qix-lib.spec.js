@@ -1,8 +1,6 @@
 const superTest = require('supertest');
 const AppServer = require('./../../src/app-server');
-const HttpStatusCodes = require('http-status-codes');
-const ql = require('superagent-graphql');
-const AppSchema = require('./../../src/modules/app/app.schema');
+const QixLib = require('./../../src/lib/qix-lib');
 
 describe('Schema generator ', () => {
 
@@ -23,7 +21,7 @@ describe('Schema generator ', () => {
     const options = {
       "qDocName": "/docs/CRM.qvf"
     };
-    let table_and_keys = await AppSchema.getTablesAndKeys(options);
+    let table_and_keys = await QixLib.getTablesAndKeys(options);
     expect(table_and_keys).to.exist;
   });
 
