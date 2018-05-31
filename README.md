@@ -8,6 +8,7 @@
 
 - [Motivation](#motivation)
 - [Features](#features)
+- [Wait, I have no idea, what you are talking about](#wait-i-have-no-idea-what-you-are-talking-about)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Roadmap](#roadmap)
@@ -29,7 +30,6 @@ The given solution uses the following components:
 - A GraphQL server being connected to the Qlik Engine
 
 ## Features
-
 The GraphQL server provides two basic different types of endpoints:
 
 **Global Scope:**
@@ -44,6 +44,13 @@ The GraphQL server provides two basic different types of endpoints:
   - Making selections
   - Creating on demand hypercubes
   - etc.
+
+## Wait, I have no idea, what you are talking about
+# Wait, No Idea What You are Talking About!
+
+OK, absolutely no problem. Let's take it easy and start from the beginning.
+
+(to be extended)
 
 ## Installation
 ### From GitHub
@@ -264,7 +271,6 @@ $ make circleci-test
 </details>
 
 ## About
-
 ### Author
 **Stefan Walther**
 
