@@ -18,14 +18,13 @@ describe('Integration tests: In APP mode', () => {
     await appServer.stop();
   });
 
-  xit('allows to fetch data from an app (CRM.qvf)', async() => {
+  it('allows to fetch data from an app (CRM.qvf)', async() => {
 
     const query = `{
-                     docs {
-                       qDocName
-                       qDocId
-                      }
-                    }`;
+                    account {
+                      AccountId
+                    }
+                  }`;
     const vars = {};
 
     await server
@@ -36,7 +35,8 @@ describe('Integration tests: In APP mode', () => {
         expect(result).to.exist;
         expect(result.body.errors).to.not.exist;
         expect(result).to.have.a.property('body').to.have.a.property('data');
-        expect(result.body.data).to.have.a.property('docs').to.be.an('array');
+        expect(result.body.data).to.have.a.property('account').to.be.an('array').of.length.greaterThan(9);
+        expect(result.body.data.account[0]).to.have.a.property('AccountId');
       })
 
   });
