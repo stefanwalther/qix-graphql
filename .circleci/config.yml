@@ -65,19 +65,12 @@ jobs:
       - run:
           name: CodeCov (upload unit tests)
           command: bash <(curl -s https://codecov.io/bash) -t $(CODECOV_TOKEN)
-#      - run:
-#          name: Integration tests
-#          command: make run-integration-tests
-#      - run:
-#          name: CodeCov (upload integration tests)
-#          command: bash <(curl -s https://codecov.io/bash) -t cad03271-0cf0-49bd-8b82-a8d3639bda4f
-
-#      - deploy:
-#          name: Push image to Docker Hub
-#          command: |
-#            VER=$(cat ./version.txt)
-#            # Only branch "master" is being pushed to Docker Hub
-#            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-#              docker push $DOCKER_REPO
-#            fi
+      - deploy:
+          name: Push image to Docker Hub
+          command: |
+            VER=$(cat ./version.txt)
+            # Only branch "master" is being pushed to Docker Hub
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker push $DOCKER_REPO
+            fi
 

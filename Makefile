@@ -25,6 +25,7 @@ build-test:									## Build the docker image (test image)
 
 up-deps:										## Bring up all dependencies
 	QIX_ENGINE_VER=$(QIX_ENGINE_VER) \
+	QIX_ACCEPT_EULA=yes \
 	docker-compose --f=./docker-compose.deps.yml up --build
 .PHONY: up-deps
 
@@ -34,6 +35,7 @@ down-deps:									## Tear down all dependencies
 
 up:													## Bring up the local demo-environment
 	QIX_ENGINE_VER=$(QIX_ENGINE_VER) \
+	QIX_ACCEPT_EULA=yes \
 	docker-compose --f=./docker-compose.dev.yml up --build
 .PHONY: up
 
@@ -43,5 +45,6 @@ down:												## Tear down the local demo-environment
 
 run-test:										## Run tests
 	QIX_ENGINE_VER=$(QIX_ENGINE_VER) \
+	QIX_ACCEPT_EULA=yes \
 	docker-compose --f=docker-compose.test.yml run qix-graphql-test npm run test:ci
 .PHONY: run-test

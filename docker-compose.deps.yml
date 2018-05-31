@@ -10,7 +10,7 @@ services:
     image: "qlikcore/engine:${QIX_ENGINE_VER:-latest}"
     command: [
        "-S", "DocumentDirectory=/docs",
-       "-S", "AcceptEULA=yes"
+       "-S", "AcceptEULA=${QIX_ACCEPT_EULA:-no}"
      ]
     volumes:
       - sense-docs:/docs

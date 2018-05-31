@@ -18,7 +18,7 @@
     "dc-down": "docker-compose --f=./docker-compose.yml down",
     "dc-up:dev": "docker-compose --f=./docker-compose.dev.yml up --build && npm run start:watch",
     "dc-down:dev": "docker-compose --f=./docker-compose.dev.yml down",
-    "start": "cross-env QIX_HOST=localhost node ./src/index.js",
+    "start": "node ./src/index.js",
     "start:watch": "cross-env QIX_HOST=localhost nodemon -L --watch ./src --exec npm run start",
     "start:watch:debug": "nodemon -L --watch ./src --exec node --inspect ./src/index.js",
     "test": "cross-env QIX_HOST=localhost nyc --reporter=lcov mocha './test/**/*.spec.js' --require './test/mocha.conf.js' --timeout 6000 && npm run coverage",
