@@ -5,5 +5,9 @@ if (process.env.CIRCLECI !== 'true') {
 if (process.env.NODE_ENV === 'test') {
   process.env.WINSTER_SUPRESS_LOGGING = 'true';
 }
-global.expect = require('chai').expect;
+
+const chai = require('chai');
+const chaiSubset = require('chai-subset');
+chai.use(chaiSubset);
+global.expect = chai.expect;
 
