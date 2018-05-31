@@ -33,14 +33,14 @@ down-deps:									## Tear down all dependencies
 	docker-compose --f=./docker-compose.deps.yml down --timeout=0
 .PHONY: down-deps
 
-up:													## Bring up the local demo-environment
+up:													## Bring up the local environment
 	QIX_ENGINE_VER=$(QIX_ENGINE_VER) \
 	QIX_ACCEPT_EULA=yes \
-	docker-compose --f=./docker-compose.dev.yml up --build
+	docker-compose --f=./docker-compose.yml up --build
 .PHONY: up
 
-down:												## Tear down the local demo-environment
-	docker-compose --f=./docker-compose.dev.yml down --timeout=0
+down:												## Tear down the local environment
+	docker-compose --f=./docker-compose.yml down --timeout=0
 .PHONY: down
 
 run-test:										## Run tests
