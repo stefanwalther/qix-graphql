@@ -15,8 +15,6 @@ const logger = require('winster').instance();
  */
 const resolveTable = (docId, tableName, fields, ctx) => {
 
-  // Todo(AAA): All hardcoded values, need to be fixed
-  // let docToOpen = '/docs/CRM.qvf';
   let docToOpen = docId;
 
   // Todo(AAA): we should be able to pass in an existing connection
@@ -68,6 +66,7 @@ const resolveTable = (docId, tableName, fields, ctx) => {
     });
 };
 
+/* istanbul ignore next */
 const outputOptions = ctx => {
   logger.verbose('qixResolvers.outputOptions');
   logger.verbose('==> ctx.config', ctx.config);

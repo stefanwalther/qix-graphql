@@ -43,5 +43,5 @@ down:												## Tear down the local demo-environment
 
 run-test:										## Run tests
 	QIX_ENGINE_VER=$(QIX_ENGINE_VER) \
-	docker-compose --f=docker-compose.test.yml run qix-graphql-test npm run test
+	docker-compose --f=docker-compose.test.yml run qix-graphql-test npm run test:ci
 .PHONY: run-test

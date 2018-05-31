@@ -56,7 +56,7 @@ describe('INTEGRATION => global scope ', () => {
       .then(result => {
         expect(result).to.exist;
         expect(result.body.errors).to.not.exist;
-        expect(result).to.have.a.property('body').to.have.a.property('data')
+        expect(result).to.have.a.property('body').to.have.a.property('data');
         expect(result.body.data).to.have.a.property('doc').to.have.a.property('qDocName').to.equal('CRM.qvf')
       })
   })
