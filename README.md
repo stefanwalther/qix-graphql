@@ -46,11 +46,13 @@ The GraphQL server provides two basic different types of endpoints:
   - etc.
 
 ## Wait, I have no idea, what you are talking about
-# Wait, No Idea What You are Talking About!
+OK, absolutely no problem, I have provided some more background information:
 
-OK, absolutely no problem. Let's take it easy and start from the beginning.
+- What is GraphQl
+- Why GraphiQl & Qlik Associative Engine?
+- What's GraphiQl
 
-(to be extended)
+(in the works)
 
 ## Installation
 ### From GitHub
