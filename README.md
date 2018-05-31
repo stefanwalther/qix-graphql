@@ -1,9 +1,8 @@
 # qix-graphql
-
-> GraphQL Server on top of the Qlik Associative Engine (QIX).
-
 [![CircleCI](https://img.shields.io/circleci/project/github/stefanwalther/qix-graphql.svg)](https://circleci.com/gh/stefanwalther/qix-graphql)
 [![codecov](https://codecov.io/gh/stefanwalther/qix-graphql/branch/master/graph/badge.svg)](https://codecov.io/gh/stefanwalther/qix-graphql)
+
+> GraphQL Server on top of the Qlik Associative Engine (QIX).
 
 ---
 
@@ -52,7 +51,7 @@ The GraphQL server provides two basic different types of endpoints:
 
 ## Installation
 
-## From GitHub
+### From GitHub
 
 First clone the repository:
 ```

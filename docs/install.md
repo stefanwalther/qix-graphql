@@ -1,5 +1,5 @@
 
-## From GitHub
+### From GitHub
 
 First clone the repository:
 ```
