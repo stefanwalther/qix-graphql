@@ -1,0 +1,22 @@
+{
+  "name": "qix-graphql-node-js-example",
+  "version": "0.1.0",
+  "description": "Example using qix-graphql using node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "up-server": "",
+    "down-server": "",
+    "build": "docker build --force-rm -t stefanwalther/qix-graphql-examples-node-js ."
+  },
+  "author": "Stefan Walther <swr.nixda@gmail.com> (http://qliksite.io)",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "graphql-client": "^2.0.1"
+  }
+}

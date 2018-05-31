@@ -20,6 +20,7 @@ services:
       - 9076
 
   sense-docs:
+    container_name: sense-docs
     image: stefanwalther/sense-docs
     volumes:
       - sense-docs:/opt/sense-docs/docs
@@ -35,7 +36,7 @@ services:
       - QIX_PORT=9076
       - HOST=qix-graphql
       - PORT=3004
-    restart: always
     command: ["npm", "run", "start"]
-    volumes:
-      - ./src/:/opt/qix-graphql/src
+    depends_on:
+      - qix
+      - sense-docs
