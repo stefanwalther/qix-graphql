@@ -30,7 +30,7 @@ up-deps:										## Bring up all dependencies
 .PHONY: up-deps
 
 down-deps:									## Tear down all dependencies
-	docker-compose --f=./docker-compose.deps.yml down
+	docker-compose --f=./docker-compose.deps.yml down --timeout=0
 .PHONY: down-deps
 
 up:													## Bring up the local demo-environment
@@ -40,11 +40,15 @@ up:													## Bring up the local demo-environment
 .PHONY: up
 
 down:												## Tear down the local demo-environment
-	docker-compose --f=./docker-compose.dev.yml down
+	docker-compose --f=./docker-compose.dev.yml down --timeout=0
 .PHONY: down
 
 run-test:										## Run tests
 	QIX_ENGINE_VER=$(QIX_ENGINE_VER) \
 	QIX_ACCEPT_EULA=yes \
-	docker-compose --f=docker-compose.test.yml run qix-graphql-test npm run test:ci
+	docker-compose --f=docker-compose.test.yml run qix-graphql-test npm run test:ci \
+	&& docker-compose --f=docker-compose.test.yml down --timeout=0
 .PHONY: run-test
+
+circleci-test: build build-test run-test	## Run the tests as on CircleCI
+.PHONY: circleci-test

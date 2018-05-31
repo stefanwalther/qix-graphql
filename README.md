@@ -46,7 +46,6 @@ The GraphQL server provides two basic different types of endpoints:
   - etc.
 
 ## Installation
-
 ### From GitHub
 
 First clone the repository:
@@ -63,8 +62,9 @@ Note: By setting QIX_ACCEPT_EULA to `yes`, you accept the EULA [as described her
 
 Then open http://localhost:3004/global/graphql in your browser to get to the GraphQl user interface.
 
+### Just using docker-compose
 <details>
-<summary>### Just using Docker</summary>
+<summary><strong>Details</strong></summary>
 
 Put this into a `docker-compose.yml` file:
 ```
@@ -114,7 +114,6 @@ Then run `QIX_ENGINE_VER=12.171.0 QIX_ACCEPT_EULA=yes docker-compose up`
 </details>
 
 ## Usage
-
 ### Work with the global scope
 
 Open the GraphiQl UI: http://localhost:3004/global/graphql
@@ -179,7 +178,6 @@ This then allows you to get e.g. all content of a single table.
 ```
 
 ## Roadmap
-
 I have split the work in a few iterations:
 
 - **Iteration 1: Core prototyping work** **_<== !!! Sorry to say: WE ARE HERE !!!_**
@@ -199,9 +197,73 @@ I have split the work in a few iterations:
 See [projects](https://github.com/stefanwalther/qix-graphql/projects) for more details.
 
 ## Contribution
+<details>
+<summary><strong>Contributing</strong></summary>
+Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue](https://github.com/stefanwalther/qix-graphql/issues). The process for contributing is outlined below:
 
-Do you like the basic idea of this project? Hopefully!  
-I am actively looking for other people who want to join this project ... Please [feel free to reach out to me](https://twitter.com/waltherstefan)
+1. Create a fork of the project
+2. Work on whatever bug or feature you wish
+3. Create a pull request (PR)
+
+I cannot guarantee that I will merge all PRs but I will evaluate them all.
+</details>
+
+<details>
+<summary><strong>Local Development</strong></summary>
+
+The easiest way to develop locally is follow these steps:
+
+1) Clone the GitHub repo
+```
+$ git clone https://github.com/stefanwalther/qix-graphql
+```
+
+2) Install the dependencies
+```
+$ npm install
+```
+
+3) Start the dependencies (Qlik Associative Engine + a few sample apps mounted):
+```
+$ make up-deps
+```
+
+Make your code changes, then:
+
+- Run local tests: `npm run test`
+- Run local tests with a watcher: `npm run test`
+- Start the GraphQl server: `npm run start`
+- Start the GraphQl server with a watcher: `npm run start:watch`
+
+</details>
+
+<details>
+<summary><strong>Running Tests</strong></summary>
+
+Having the local dependencies up and running, you can just run the tests by executing:
+
+```
+$ npm run test
+```
+
+If you want to have an watcher active, use:
+
+```
+$ npm run test:watch
+```
+
+</details>
+
+<details>
+<summary><strong>CircleCI Tests</strong></summary>
+
+To simulate the tests running on CircleCI run the following:
+
+```
+$ make circleci-test
+```
+
+</details>
 
 ## About
 

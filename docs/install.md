@@ -16,9 +16,9 @@ Note: By setting QIX_ACCEPT_EULA to `yes`, you accept the EULA [as described her
 Then open http://localhost:3004/global/graphql in your browser to get to the GraphQl user interface.
 
 
-
+### Just using docker-compose
 <details>
-<summary>### Just using Docker</summary>
+<summary><strong>Details</strong></summary>
 
 Put this into a `docker-compose.yml` file:
 ```
