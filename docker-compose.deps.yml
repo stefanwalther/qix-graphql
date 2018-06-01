@@ -20,7 +20,7 @@ services:
       - 9076
 
   sense-docs:
-    image: stefanwalther/sense-docs
+    image: stefanwalther/sense-docs:latest@sha256:50f9a7baffa3eaaac1346ba64d762c64223f6dfcc6ff8c6eaed9e7c874fc5e5a
     volumes:
       - sense-docs:/opt/sense-docs/docs
     tty: true
