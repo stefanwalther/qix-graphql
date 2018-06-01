@@ -18,7 +18,7 @@ describe('Integration tests: In APP mode', () => {
     await appServer.stop();
   });
 
-  it('allows to fetch data from an app (CRM.qvf)', async() => {
+  it('allows to fetch data from a doc (CRM.qvf)', async() => {
 
     const query = `{
                     account {
@@ -28,7 +28,7 @@ describe('Integration tests: In APP mode', () => {
     const vars = {};
 
     await server
-      .post('/app/%2Fdocs%2FCRM.qvf/graphql')
+      .post('/doc/%2Fdocs%2FCRM.qvf/graphql')
       .use(ql(query, vars))
       .expect(HttpStatusCodes.OK)
       .then(result => {
@@ -51,7 +51,7 @@ describe('Integration tests: In APP mode', () => {
     const vars = {};
 
     await server
-      .post('/app/%2Fdocs%2FCRM.qvf/graphql')
+      .post('/doc/%2Fdocs%2FCRM.qvf/graphql')
       .use(ql(query, vars))
       .expect(HttpStatusCodes.BAD_REQUEST)
       .then(result => {

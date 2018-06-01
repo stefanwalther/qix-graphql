@@ -7,7 +7,7 @@ const {
   GraphQLList
 } = require('graphql');
 
-class GraphQlGenerator {
+class DocSchemaGenerator {
 
   /**
    *
@@ -147,7 +147,7 @@ class GraphQlGenerator {
 
     table.qFields.forEach(f => {
       r[lib.sanitize(f.qName)] = {
-        type: GraphQlGenerator._matchTypeFromTags(f.qTags)
+        type: DocSchemaGenerator._matchTypeFromTags(f.qTags)
       };
     });
 
@@ -170,4 +170,4 @@ class GraphQlGenerator {
 
 }
 
-module.exports = GraphQlGenerator;
+module.exports = DocSchemaGenerator;

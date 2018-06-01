@@ -1,15 +1,15 @@
-const AppSchemaGenerator = require('./app-schema-generator');
+const DocSchemaGenerator = require('./doc-schema-generator');
 const QixLib = require('./../../lib/qix-lib');
 
 // Todo: to be replaced with the schemaCache ...
 // let schemas = {};
 
-class AppSchema {
+class DocSchema {
 
-  static async generateAppSchema(qDocId) {
+  static async generateDocSchema(qDocId) {
 
     let tk = await QixLib.getTablesAndKeys({qDocName: qDocId});
-    let generator = new AppSchemaGenerator({
+    let generator = new DocSchemaGenerator({
       qDocId: qDocId,
       tables_and_keys: tk
     });
@@ -42,4 +42,4 @@ class AppSchema {
 
 }
 
-module.exports = AppSchema;
+module.exports = DocSchema;

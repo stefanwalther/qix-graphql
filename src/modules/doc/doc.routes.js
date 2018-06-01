@@ -4,23 +4,23 @@ const graphqlHTTP = require('express-graphql');
 const ExpressResult = require('express-result');
 
 const defaultConfig = require('./../../config/config');
-const qixResolvers = require('./app.resolvers');
+const docResolvers = require('./doc.resolvers');
 // Const AppController = require('./app.controller');
-const AppSchema = require('./app.schema');
+const DocSchema = require('./doc.schema');
 
 /**
  * Endpoint to generate a route for the given document.
  */
-router.all('/app/:qDocId/graphql', async (req, res) => {
+router.all('/doc/:qDocId/graphql', async (req, res) => {
 
   try {
-    let schema = await AppSchema.generateAppSchema(req.params.qDocId);
+    let schema = await DocSchema.generateDocSchema(req.params.qDocId);
     return graphqlHTTP({
       schema: schema,
       graphiql: true,
       context: {
         config: defaultConfig,
-        qixResolvers: qixResolvers
+        qixResolvers: docResolvers
       }
     })(req, res);
   } catch (err) {
