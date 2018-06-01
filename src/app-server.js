@@ -30,7 +30,8 @@ class AppServer {
 
     try {
       this.server = this.app.listen(this.config.PORT);
-      this.logger.info(`Express server listening on port ${this.config.PORT} in "${this.config.NODE_ENV}" mode`);
+      this.logger.info(`Server listening on port ${this.config.PORT} in "${this.config.NODE_ENV}" mode`);
+      this.logger.info(`Connecting to QIX on ${config.QIX_HOST}:${config.QIX_PORT}`);
     } catch (e) {
       this.logger.error('Cannot start express server', e);
     }

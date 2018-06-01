@@ -66,6 +66,10 @@ const resolveTable = (docId, tableName, fields, ctx) => {
     });
 };
 
+const resolveDummy = (/* ctx */) => {
+  return 'foo';
+};
+
 /* istanbul ignore next */
 const outputOptions = ctx => {
   logger.verbose('qixResolvers.outputOptions');
@@ -75,5 +79,6 @@ const outputOptions = ctx => {
 
 module.exports = {
   outputOptions,
-  resolveTable
+  resolveTable,
+  resolveDummy
 };

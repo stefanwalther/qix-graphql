@@ -1,4 +1,4 @@
-const EnvResolvers = require('./global.resolvers');
+const GlobalResolvers = require('./global.resolvers');
 const {
   GraphQLNonNull,
   GraphQLObjectType,
@@ -97,14 +97,14 @@ const RootQueryType = new GraphQLObjectType({
         }
       },
       resolve: (obj, args /* , ctx */) => {
-        return EnvResolvers.getDoc(args.qDocId);
+        return GlobalResolvers.getDoc(args.qDocId);
       }
     },
     docs: {
       type: new GraphQLList(DocType),
       description: 'Return all Qlik documents available in the current environment.',
       resolve: (/* obj, args, ctx */) => {
-        return EnvResolvers.getDocs();
+        return GlobalResolvers.getDocs();
       }
     }
   }

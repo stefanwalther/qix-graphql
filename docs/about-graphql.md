@@ -1,5 +1,8 @@
-# Wait, No Idea What You are Talking About!
+# GraphQl
 
-OK, absolutely no problem. Let's take it easy and start from the beginning.
 
-(to be extended)
+
+## Links
+
+- [graphql.org website](https://graphql.org/)
+- [Introduction to GraphQl](https://graphql.org/learn/)

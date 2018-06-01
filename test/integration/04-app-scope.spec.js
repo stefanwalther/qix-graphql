@@ -61,4 +61,18 @@ describe('Integration tests: In APP mode', () => {
 
   });
 
+  it.only('allows to fetch all tables from a given document', async() => {
+    const query = ``;
+    const vars = {};
+
+    await server
+      .post('/app/%2Fdocs%2FCRM.qvf/graphql')
+      .use(ql(query, vars))
+      .expect(HttpStatusCodes.OK)
+      .then(result => {
+        expect(result.errors).to.not.exist;
+        expect(result.to.exist);
+      })
+  });
+
 });

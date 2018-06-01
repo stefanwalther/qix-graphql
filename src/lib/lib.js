@@ -1,4 +1,3 @@
-
 module.exports = {
 
   /**
@@ -13,5 +12,14 @@ module.exports = {
     s = s.replace(/ /g, '_'); // eslint-disable-line no-useless-escape
     s = s.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '_'); // eslint-disable-line no-useless-escape
     return s;
+  },
+
+  sort_objects: src => {
+    const keys = Object.keys(src);
+    keys.sort();
+    return keys.reduce((target, key) => {
+      target[key] = src[key];
+      return target;
+    }, {});
   }
 };

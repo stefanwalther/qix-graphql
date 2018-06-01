@@ -7,7 +7,7 @@ const {
   GraphQLList
 } = require('graphql');
 
-class GraphQlGenerator {
+class AppSchemaGenerator {
 
   /**
    *
@@ -44,15 +44,12 @@ class GraphQlGenerator {
   }
 
   /**
-   * Options.tables_and_keys
-   * options.table_and_keys
+   * Returns the schema for a given app.
+   *
    * @param options
    * @param {String} options.qDocId - Id of the document.
    * @param {Object} options.tables_and_keys
    * options.nx_app_layout
-   *
-   * Todo: bookmarks
-   *
    */
   getSchema() {
 
@@ -71,9 +68,56 @@ class GraphQlGenerator {
    */
   _getRootQuery() {
     return new GraphQLObjectType({
-      name: 'Tables',
-      fields: this._getTables()
+      name: 'root',
+      description: `Data from the app "${this.options.qDocId}" (${this.options.qDocName})`,
+      fields: this._getRootFields()
     });
+  }
+
+  _getRootFields() {
+    let queries = {};
+    Object.assign(queries, this._getTablesQuery());
+    Object.assign(queries, this._getAnotherQuery());
+
+    queries = lib.sort_objects(queries);
+
+    return queries;
+  }
+
+  /**
+   * @Todo: Document this
+   *
+   * @returns {{}}
+   * @private
+   */
+  _getTablesQuery() {
+    let r = {};
+
+    this.options.tables_and_keys.qtr.forEach(t => {
+      let tableName = lib.sanitize(t.qName);
+      let inputType = this._types[tableName];
+      let fields = this._tableCache[tableName];
+      r[lib.sanitize(t.qName)] = {
+        type: new GraphQLList(inputType),
+        resolve: (obj, args, ctx) => {
+          // Todo(AAA): Here we can potentially pass in the list of fields
+          return ctx.qixResolvers.resolveTable(this.options.qDocId, tableName, fields, ctx);
+        }
+      };
+    });
+    return r;
+  }
+
+  _getAnotherQuery() {
+    let r = [];
+    r._tables_and_keys = {
+      name: 'test',
+      type: GraphQLString,
+      resolve: (obj, args, ctx) => {
+        return ctx.qixResolvers.resolveDummy();
+      }
+    };
+    return r;
   }
 
   // Todo: Could make sense to refactor this to be a function to return the types.
@@ -91,7 +135,6 @@ class GraphQlGenerator {
         fields: this._getFields(t)
       });
     });
-    // This.logger.verbose('this._types', this._types);
   }
 
   /**
@@ -110,31 +153,6 @@ class GraphQlGenerator {
   }
 
   /**
-   * @Todo: Document this
-   *
-   * @returns {{}}
-   * @private
-   */
-  _getTables() {
-    let r = {};
-
-    this.options.tables_and_keys.qtr.forEach(t => {
-      let tableName = lib.sanitize(t.qName);
-      let inputType = this._types[tableName];
-      let fields = this._tableCache[tableName];
-      r[lib.sanitize(t.qName)] = {
-        type: new GraphQLList(inputType),
-        resolve: (obj, args, ctx) => {
-          // Todo(AAA): Here we can potentially pass in the list of fields
-          return ctx.qixResolvers.resolveTable(this.options.qDocId, tableName, fields, ctx);
-        }
-      };
-    });
-
-    return r;
-  }
-
-  /**
    * Return the fields for a given table.
    *
    * @param {string} table - The name of the table.
@@ -147,7 +165,7 @@ class GraphQlGenerator {
 
     table.qFields.forEach(f => {
       r[lib.sanitize(f.qName)] = {
-        type: GraphQlGenerator._matchTypeFromTags(f.qTags)
+        type: AppSchemaGenerator._matchTypeFromTags(f.qTags)
       };
     });
 
@@ -168,6 +186,16 @@ class GraphQlGenerator {
     // }
   }
 
+  static DummyType() {
+    return new GraphQLObjectType({
+      name: 'DummyType',
+      fields: {
+        foo: GraphQLString,
+        bar: GraphQLString
+      }
+    });
+  }
+
 }
 
-module.exports = GraphQlGenerator;
+module.exports = AppSchemaGenerator;
