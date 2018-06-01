@@ -2,6 +2,8 @@
 
 > GraphQL Server on top of the Qlik Associative Engine (a.k.a. QIX Engine).
 
+![](./docs/images/header.png)
+
 ## Table of Contents
 
 <details>
