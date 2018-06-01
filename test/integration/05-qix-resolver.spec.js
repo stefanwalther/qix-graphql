@@ -1,4 +1,4 @@
-const qixResolver = require('../../src/modules/app/app.resolvers');
+const docResolver = require('../../src/modules/doc/doc.resolvers');
 const mockTablesAndKeys = require('./../fixtures/TablesAndKeys-CRM.json');
 
 describe('qixResolver', () => {
@@ -6,7 +6,7 @@ describe('qixResolver', () => {
 
     it('throws an error without context', () => {
       let fn = () => {
-        qixResolver.resolveTable();
+        docResolver.resolveTable();
       };
       expect(fn).to.throw(Error, "Cannot read property 'config' of undefined");
     });
@@ -20,7 +20,7 @@ describe('qixResolver', () => {
         },
         tables_and_keys: mockTablesAndKeys
       };
-      let result = await qixResolver.resolveTable(null, null, ctx); // Todo: pass variables in here
+      let result = await docResolver.resolveTable(null, null, ctx); // Todo: pass variables in here
       expect(result).to.exist;
       expect(result).to.be.an('array');
     });

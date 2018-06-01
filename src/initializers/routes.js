@@ -11,15 +11,15 @@ router.use('/', require('./../modules/health-check/health-check.routes.js'));
 // Global
 router.use('/', require('./../modules/global/global.routes'));
 
-// Router.use('/app/:id', );
-router.use('/', require('./../modules/app/app.routes'));
+// Router.use('/doc/:id', );
+router.use('/', require('./../modules/doc/doc.routes'));
 
 // Fallback / root
+// Todo: localhost is hardcoded here, we have to fix that
 router.use('/', (req, res) => {
   res.json({
     _links: {
       _self: 'http://localhost:3004',
-      // 'api-docs': 'http://localhost:3004/api-docs',
       global: 'http://localhost:3004/global/graphql',
       'health-check': 'http://localhost:3004/health-check'
     }

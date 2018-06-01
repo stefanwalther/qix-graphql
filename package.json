@@ -1,7 +1,7 @@
 {
   "name": "qix-graphql",
   "version": "0.0.1",
-  "description": "GraphQL Server on top of the Qlik Associative Engine (QIX).",
+  "description": "GraphQL Server on top of the Qlik Associative Engine (a.k.a. QIX Engine).",
   "main": "./src/index.js",
   "scripts": {
     "docs": "docker run --rm -v ${PWD}:/opt/verb stefanwalther/verb",

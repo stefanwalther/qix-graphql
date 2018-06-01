@@ -17,3 +17,5 @@ COPY /src ./src/
 ARG PORT=3004
 ENV PORT=${PORT}
 EXPOSE $PORT
+
+CMD ["npm", "run", "start"]

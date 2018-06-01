@@ -1,5 +1,5 @@
 {
-  "ext": "md",
+  "ext": "md,png,jpg,jpeg,gif,svg",
   "verbose": false,
   "ignore": [
     "README.md"

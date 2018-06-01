@@ -20,6 +20,7 @@ async function getDocs() {
   result.data.docs.forEach(item => {
     console.log(`\t- ${item.qDocName}`);
   });
+  console.log('');
 })();
 
 module.exports = {

@@ -19,6 +19,10 @@ build:											## Build the docker image (production)
 	docker build --force-rm -t stefanwalther/qix-graphql -f Dockerfile.prod .
 .PHONY: build
 
+run:
+	docker run -d -p 3004:3004 stefanwalther/qix-graphql
+.PHONY: build
+
 build-test:									## Build the docker image (test image)
 	docker build --force-rm -t stefanwalther/qix-graphql-test -f Dockerfile.test .
 .PHONY: build-test

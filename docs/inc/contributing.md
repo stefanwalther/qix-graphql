@@ -1,3 +1,5 @@
+I am actively looking for people out there, who think that this project is an interesting idea and want to contribute.
+
 <details>
 <summary><strong>Contributing</strong></summary>
 Pull requests and stars are always welcome. For bugs and feature requests, [please create an issue]({%= bugs.url %}). The process for contributing is outlined below:

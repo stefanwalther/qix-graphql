@@ -24,7 +24,7 @@ class Resolvers {
 
     docs.map(doc => { // eslint-disable-line array-callback-return
       doc._links = {
-        _doc: `http://${config.HOST}:${config.PORT}/app/${encodeURIComponent(doc.qDocId)}/graphql`
+        _doc: `http://${config.HOST}:${config.PORT}/doc/${encodeURIComponent(doc.qDocId)}/graphql`
       };
     });
     retVal = docs;
