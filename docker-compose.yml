@@ -21,14 +21,14 @@ services:
 
   sense-docs:
     container_name: sense-docs
-    image: stefanwalther/sense-docs
+    image: stefanwalther/sense-docs:latest@sha256:50f9a7baffa3eaaac1346ba64d762c64223f6dfcc6ff8c6eaed9e7c874fc5e5a
     volumes:
       - sense-docs:/opt/sense-docs/docs
     tty: true
 
   qix-graphql:
     container_name: qix-graphql
-    image: "stefanwalther/qix-graphql"
+    image: "stefanwalther/qix-graphql:latest@sha256:f5a4d89ff5e56a43b039ba7a127d40ba7c64101232ace266d8f50a5484f7d414"
     ports:
       - "3004:3004"
     environment:
