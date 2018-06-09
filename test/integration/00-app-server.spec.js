@@ -30,7 +30,6 @@ describe('INTEGRATION => appServer', () => {
     expect(appServer.config.QIX_PORT).to.equal(config.QIX_PORT);
   });
 
-
 });
 
 

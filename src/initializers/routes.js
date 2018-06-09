@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router(); // eslint-disable-line new-cap
+const config = require('./../config/config');
 
 // API Docs
 // Todo: Just crap for now
@@ -15,13 +16,12 @@ router.use('/', require('./../modules/global/global.routes'));
 router.use('/', require('./../modules/doc/doc.routes'));
 
 // Fallback / root
-// Todo: localhost is hardcoded here, we have to fix that
 router.use('/', (req, res) => {
   res.json({
     _links: {
-      _self: 'http://localhost:3004',
-      global: 'http://localhost:3004/global/graphql',
-      'health-check': 'http://localhost:3004/health-check'
+      _self: `http://${config.HOST}:${config.PORT}`,
+      global: `http://${config.HOST}:${config.PORT}/global/graphql`,
+      'health-check': `http://${config.HOST}:${config.PORT}/health-check`
     }
   });
 });
