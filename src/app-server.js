@@ -5,15 +5,16 @@ const helmet = require('helmet');
 const initializer = require('express-initializers');
 const logger = require('winster').instance();
 const path = require('path');
+const _ = require('lodash');
 
 const config = require('./config/config');
 
 class AppServer {
 
-  constructor() {
+  constructor(opts = {}) {
     this.server = null;
     this.logger = logger;
-    this.config = config;
+    this.config = _.extend(_.clone(config), opts);
 
     this.app = express();
     this.app.use(compression());
@@ -28,20 +29,18 @@ class AppServer {
 
     await initializer(this.app, {directory: path.join(__dirname, 'initializers')});
 
-    try {
-      this.server = this.app.listen(this.config.PORT);
-      this.logger.info(`Express server listening on port ${this.config.PORT} in "${this.config.NODE_ENV}" mode`);
-    } catch (e) {
-      this.logger.error('Cannot start express server', e);
-    }
+    this.server = this.app.listen(this.config.PORT);
+    this.logger.info(`Express server listening on port ${this.config.PORT} in "${this.config.NODE_ENV}" mode`);
   }
 
   /**
    * Stop the GraphQL server.
    */
   async stop() {
-    await this.server.close();
-    this.logger.info('Server stopped');
+    if (this.server) {
+      await this.server.close();
+      this.logger.info('Server stopped');
+    }
   }
 }
 

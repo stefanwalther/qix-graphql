@@ -16,6 +16,7 @@ describe('INTEGRATION => global scope ', () => {
 
   afterEach(async () => {
     await appServer.stop();
+    appServer = null;
   });
 
   it('allows to query docs', async () => {
