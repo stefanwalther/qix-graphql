@@ -37,10 +37,8 @@ class AppServer {
    * Stop the GraphQL server.
    */
   async stop() {
-    if (this.server) {
-      await this.server.close();
-      this.logger.info('Server stopped');
-    }
+    await this.server.close();
+    this.logger.info('Server stopped');
   }
 }
 
