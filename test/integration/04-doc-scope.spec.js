@@ -57,7 +57,7 @@ describe('Integration tests: In APP mode', () => {
       .then(result => {
         expect(result).to.exist;
         expect(result.body.errors[0]).to.deep.contain({'message': 'Cannot query field "table_does_not_exist" on type "Tables".'});
-      })
+      });
 
   });
 

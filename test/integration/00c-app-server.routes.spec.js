@@ -24,7 +24,6 @@ describe('INTEGRATION => appServer', () => {
       .get('/foo')
       .expect(HttpStatus.OK)
       .then(result => {
-        console.log(result.body);
         expect(result.body).to.have.property('_links');
         expect(result.body._links).to.have.property('_self').to.be.equal(`http://${config.HOST}:${config.PORT}`)
       })
