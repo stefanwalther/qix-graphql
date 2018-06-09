@@ -52,18 +52,18 @@ const resolveTable = (docId, tableName, fields, ctx) => {
           });
 
           return result;
-        })
-        .catch(err => {
-          console.log('err in getTableData', err);
         });
-    })
-    .catch(err => {
-      logger.error('Err in getTablesAndKeys', err);
-      throw err;
-    }, err => {
-      logger.error('There is another error here', err);
-      throw err;
+      // .catch(err => {
+      //   console.log('err in getTableData', err);
+      // });
     });
+  // .catch(err => {
+  //   logger.error('Err in getTablesAndKeys', err);
+  //   throw err;
+  // }, err => {
+  //   logger.error('There is another error here', err);
+  //   throw err;
+  // });
 };
 
 /* istanbul ignore next */
