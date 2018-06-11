@@ -31,9 +31,11 @@ class AppServer {
 
     this.server = this.app.listen(this.config.PORT);
     this.logger.info(`Express server started: 
-      - host ${this.config.HOST}
-      - port ${this.config.PORT} 
-      - env "${this.config.NODE_ENV}"`);
+                        - host ${this.config.HOST}
+                        - port ${this.config.PORT} 
+                        - qix-host ${this.config.QIX_PORT} 
+                        - qix-port ${this.config.QIX_PORT} 
+                        - env "${this.config.NODE_ENV}"`);
   }
 
   /**

@@ -131,7 +131,7 @@ const RootQueryType = new GraphQLObjectType({
     },
     env: {
       type: ConfigType,
-      description: 'Return configuration of the entire environment.',
+      description: 'Return the configuration of the entire environment.',
       resolve: (/* obj, args, ctx */) => {
         return GlobalResolvers.getEnv();
       }

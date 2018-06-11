@@ -53,7 +53,6 @@ class Resolvers {
     };
     return e;
   }
-
 }
 
 module.exports = Resolvers;
