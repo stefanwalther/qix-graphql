@@ -30,7 +30,10 @@ class AppServer {
     await initializer(this.app, {directory: path.join(__dirname, 'initializers')});
 
     this.server = this.app.listen(this.config.PORT);
-    this.logger.info(`Express server listening on port ${this.config.PORT} in "${this.config.NODE_ENV}" mode`);
+    this.logger.info(`Express server started: 
+      - host ${this.config.HOST}
+      - port ${this.config.PORT} 
+      - env "${this.config.NODE_ENV}"`);
   }
 
   /**
