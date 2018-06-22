@@ -1,6 +1,7 @@
 {
   "extends": [
     "config:base",
-    "schedule:monthly"
+    "schedule:monthly",
+    "preview:dockerCompose"
   ]
 }
