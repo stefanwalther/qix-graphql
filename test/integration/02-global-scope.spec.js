@@ -3,6 +3,7 @@ const AppServer = require('./../../src/app-server');
 const HttpStatusCodes = require('http-status-codes');
 const ql = require('superagent-graphql');
 const config = require('./../../src/config/config');
+const _ = require('lodash');
 
 describe('INTEGRATION => global scope ', () => {
 
@@ -69,8 +70,7 @@ describe('INTEGRATION => global scope ', () => {
                       HOST
                       PORT
                       QIX_HOST
-                      QIX_PORT
-                      
+                      QIX_PORT                      
                     }
                   }`;
     const vars = {};
@@ -86,7 +86,7 @@ describe('INTEGRATION => global scope ', () => {
         expect(result.body.data.env).to.have.a.property('HOST').to.equal(config.HOST);
         expect(result.body.data.env).to.have.a.property('PORT').to.equal(config.PORT);
         expect(result.body.data.env).to.have.a.property('QIX_HOST').to.equal(config.QIX_HOST);
-        expect(result.body.data.env).to.have.a.property('QIX_PORT').to.equal(config.QIX_PORT);
+        expect(result.body.data.env).to.have.a.property('QIX_PORT').to.equal(_.toNumber(config.QIX_PORT));
       })
   })
 
