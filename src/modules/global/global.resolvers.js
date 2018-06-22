@@ -2,6 +2,7 @@ const enigma = require('enigma.js');
 const WebSocket = require('ws');
 const schema = require('enigma.js/schemas/12.20.0.json');
 const config = require('./../../config/config'); // Todo: we ignore the context here!?!?!
+const _ = require('lodash');
 
 class Resolvers {
 
@@ -38,11 +39,19 @@ class Resolvers {
    * @param qDocId
    * @returns {Promise<*>}
    */
-  static getDoc(qDocId) {
-    return Resolvers.getDocs()
-      .then(docs => {
-        return docs.filter(doc => doc.qDocId === qDocId)[0];
-      });
+  static async getDoc(qDocId) {
+    let docs = await Resolvers.getDocs();
+    return docs.filter(doc => doc.qDocId === qDocId)[0];
+  }
+
+  static async getEnv() {
+    const e = {
+      HOST: config.HOST,
+      PORT: _.parseInt(config.PORT),
+      QIX_HOST: config.QIX_HOST,
+      QIX_PORT: _.parseInt(config.QIX_PORT)
+    };
+    return e;
   }
 }
 

@@ -91,7 +91,6 @@ class DocSchemaGenerator {
         fields: this._getFields(t)
       });
     });
-    // This.logger.verbose('this._types', this._types);
   }
 
   /**

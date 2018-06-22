@@ -1,4 +1,4 @@
-const EnvResolvers = require('./global.resolvers');
+const GlobalResolvers = require('./global.resolvers');
 const {
   GraphQLNonNull,
   GraphQLObjectType,
@@ -33,6 +33,28 @@ const TableAndKeys = new GraphQLObjectType({
     qtr: {type: new GraphQLList(TableRecord)}
     // ,
     // qk: {new GraphQLList(SourceKeyRecord)}
+  }
+});
+
+const ConfigType = new GraphQLObjectType({
+  name: 'ConfigType',
+  fields: {
+    HOST: {
+      type: GraphQLString,
+      description: 'The host of the GraphQL server'
+    },
+    PORT: {
+      type: GraphQLInt,
+      description: 'The port of the GraphQL server'
+    },
+    QIX_HOST: {
+      type: GraphQLString,
+      description: 'The host of the QIX server'
+    },
+    QIX_PORT: {
+      type: GraphQLInt,
+      description: 'The port of the QIX server'
+    }
   }
 });
 
@@ -97,14 +119,21 @@ const RootQueryType = new GraphQLObjectType({
         }
       },
       resolve: (obj, args /* , ctx */) => {
-        return EnvResolvers.getDoc(args.qDocId);
+        return GlobalResolvers.getDoc(args.qDocId);
       }
     },
     docs: {
       type: new GraphQLList(DocType),
       description: 'Return all Qlik documents available in the current environment.',
       resolve: (/* obj, args, ctx */) => {
-        return EnvResolvers.getDocs();
+        return GlobalResolvers.getDocs();
+      }
+    },
+    env: {
+      type: ConfigType,
+      description: 'Return the configuration of the entire environment.',
+      resolve: (/* obj, args, ctx */) => {
+        return GlobalResolvers.getEnv();
       }
     }
   }
