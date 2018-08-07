@@ -1,4 +1,4 @@
-QIX_ENGINE_VER := "12.190.0"
+QIX_ENGINE_VER := "12.207.0"
 
 help:												## Show this help.
 	@echo ''
@@ -47,12 +47,15 @@ down:												## Tear down the local environment
 	docker-compose --f=./docker-compose.yml down --timeout=0
 .PHONY: down
 
-run-test:										## Run tests
+run-test:										## Run tests (assumes that the test-image has been built)
 	QIX_ENGINE_VER=$(QIX_ENGINE_VER) \
 	QIX_ACCEPT_EULA=yes \
 	docker-compose --f=docker-compose.test.yml run qix-graphql-test npm run test:ci \
 	&& docker-compose --f=docker-compose.test.yml down --timeout=0
 .PHONY: run-test
+
+test: build build-test run-test	## Run tests (as they would run on CircleCI)
+.PHONY: test
 
 circleci-test: build build-test run-test	## Run the tests as on CircleCI
 .PHONY: circleci-test
