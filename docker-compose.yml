@@ -28,7 +28,7 @@ services:
 
   qix-graphql:
     container_name: qix-graphql
-    image: "stefanwalther/qix-graphql:latest@sha256:74b751cd819042d2858a07c71904fef5eb52179b9e6ccc27771467d561d9c637"
+    image: "stefanwalther/qix-graphql:latest@sha256:8e3175297c3de74ebc06ecbe7757bcf2d2e8cf20dc01c5994ad4f12fdff9bd59"
     ports:
       - "3004:3004"
     environment:
