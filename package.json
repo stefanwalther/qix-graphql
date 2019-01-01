@@ -58,7 +58,7 @@
     "express-graphql": "^0.6.12",
     "express-initializers": "0.0.1",
     "express-result": "^0.1.4",
-    "graphql": "^0.13.0",
+    "graphql": "^14.0.0",
     "helmet": "^3.12.0",
     "js-yaml": "^3.11.0",
     "lodash": "^4.17.10",
