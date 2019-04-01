@@ -62,7 +62,7 @@
     "helmet": "^3.12.0",
     "js-yaml": "^3.11.0",
     "lodash": "^4.17.10",
-    "read-pkg-up": "^3.0.0",
+    "read-pkg-up": "^5.0.0",
     "superagent-graphql": "^0.1.2",
     "swagger-ui-express": "^2.0.8",
     "winster": "^0.2.11",
